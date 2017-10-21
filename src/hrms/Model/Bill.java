@@ -1,48 +1,28 @@
+/*The Bill is used to calculate the cost of the Reservation stay for the Guest at the hotel*/
+//*****Bill object/class not needed
 package hrms.Model;
 
-import javafx.beans.property.*;
-
-/*The Bill is used to calculate the cost of the Reservation stay for the Guest at the hotel*/
-
 public class Bill {
-	private IntegerProperty billId; /*bill id*/
-	private DoubleProperty billAmount; /*bill amount*/
+    private int billId;
+    private double billAmount;
     
-	public Bill(){
-		billId = new SimpleIntegerProperty();
-		billAmount = new SimpleDoubleProperty();
-	}
-	
 	/*@param bill id is set(int)*/
-    public void setBillId(int id){
-    	this.billId.set(id);
-    }
+    public void setBillId(int id){}
     
     /*@return bill id*/
     public int getBillId(){
-    	return this.billId.get();
-    }
-    
-    public IntegerProperty billIdProperty(){
-    	return billId;
+        return billId;
+            
     }
     
     /*@param bill amount is set(double)*/
-    public void setBillAmount(double amount){
-    	this.billAmount.set(amount);
-    }
+    public void setBillAmount(double amount){}
     
     /*@return bill amount*/
     public double getBillAmount(){
-    	return this.billAmount.get();
+        return billAmount;
     }
     
-    public DoubleProperty billAmountProperty(){
-    	return billAmount;
-    }
-    
-    
-    //what to do with these
     /*@param bill amount increased (double)
      * @pre: billAmount > 0.0
      * @post: billAmount > 0.0

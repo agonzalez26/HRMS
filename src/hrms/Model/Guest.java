@@ -1,125 +1,122 @@
-package hrms.Model;
-
-import javafx.beans.property.*;
-
 /*A Guest is a customer at the hotel. A Guest is
 an extension of the Operator class that can create and update a Reservation.
 Each guests will have information that is stored in the system.*/
 
+package hrms.Model;
+
+import java.util.List;
+
 public class Guest extends Operator{
-	private StringProperty firstName; /*guest first name*/
-	private StringProperty lastName; /*guest last name*/
-	private StringProperty homeAddress; /*home address*/
-	private StringProperty emailAddress; /*email address*/
-	private StringProperty phoneNumber; /*phone number*/
-	private IntegerProperty guestId; /*guest id*/
-	private IntegerProperty confirmationNumber; /*confirmation number for reservation*/
+	private String firstName;	/*The first name of the guest at the hotel*/
+	private String lastName;	 /*The last name of the guest staying at the hotel.*/
+	private String address;	 /*The street address of the guest staying at the hotel*/
+	private String email;	 /*The email address of the guest staying at the hotel.*/
+	private String phoneNumber; /*The phone number of the guest staying at the hotel*/
+	private int age;		//age of the guest
+	private int id;	 /*The guest ID of the guest staying at the hotel.*/
+	//private int confirmationNumber;	 /*The confirmation number of the guest staying at the hotel*/
+	//The idea of a confirmation number isnt needed if we have reservation IDs
+	//In the instance of having multiple reservations for one guest, we can have multiple reservation IDs 
+	//assigned to a guest instead of one confirmation number which has the different reservation IDs
+	//assigned to it anyways (inefficient)
+	private int amountOfReservations;	//the number of reservations that the person has
+	private List<Reservation> reservationList;	//The reservations assigned to that guest
+	private Database db = new Database();
 	
-	public Guest(){
-		firstName = new SimpleStringProperty();
-		lastName = new SimpleStringProperty();
-		homeAddress = new SimpleStringProperty();
-		emailAddress = new SimpleStringProperty();
-		phoneNumber = new SimpleStringProperty();
-		guestId = new SimpleIntegerProperty();
-		confirmationNumber = new SimpleIntegerProperty();
+	public Guest(String fn, String ln, String adr, String eml, String pn, int a) {
+		firstName = fn;
+		lastName = ln;
+		address = adr;
+		email = eml;
+		phoneNumber = pn;
+		age = a;
+		db.addGuest(fn, ln, adr, eml, pn, a);
+	}
+	/*@param guest first name is set (String)*/
+	public void setGuestFirstName(String fName){
+		firstName = fName;
+		db.updateGuest(this);
 	}
 	
 	/*@return guest first name*/
-	public String getFirstName(){
-		return firstName.get();
-	}
-	
-	/*@param guest first name is set (String)*/
-	public void setFirstName(String first){
-		this.firstName.set(first);
-	}
-	
-	public StringProperty firstNameProperty(){
+	public String getFirstName() {
 		return firstName;
+	}
+	
+	/*@param guest last name is set (String)*/
+	public void setLastName(String lName){
+		lastName = lName;
+		db.updateGuest(this);
 	}
 	
 	/*@return guest last name*/
 	public String getLastName(){
-		return this.lastName.get();
-	}
-	
-	/*@param guest last name is set (String)*/
-	public void setLastName(String last){
-		this.lastName.set(last);
-	}
-	
-	public StringProperty lastNameProperty(){
 		return lastName;
 	}
 	
-	/*@return guest address*/
-	public String getHomeAddress(){
-		return homeAddress.get();
-	}
-	
 	/*@param guest address is set (String)*/
-	public void setHomeAddress(String address){
-		this.homeAddress.set(address);
+	public void setAddress(String adr){
+		address = adr;
+		db.updateGuest(this);
 	}
 	
-	public StringProperty homeAddressProperty(){
-		return homeAddress;
-	}
-	
-	/*@return guest phone number*/
-	public String getPhoneNumber(){
-		return this.phoneNumber.get();
-	}
-	/*@param guest phone number is set (String)*/
-	public void setPhoneNumber(String phone){
-		this.phoneNumber.set(phone);
-	}
-	
-	public StringProperty phoneNumberProperty(){
-		return phoneNumber;
-	}
-	
-	/*@return guest email*/
-	public String getEmailAddress(){
-		return this.emailAddress.get();
+	/*@return guest address*/
+	public String getAddress(){
+		return address;
 	}
 	
 	/*@param guest email is set (String)*/
-	public void setEmailAddress(String email){
-		this.emailAddress.set(email);
+	public void setEmail(String em){
+		email = em;
+		db.updateGuest(this);
 	}
 	
-	public StringProperty emailAddressProperty(){
-		return emailAddress;
+	/*@return guest email*/
+	public String getEmail(){
+		return email;
+	}
+	
+	/*@param guest phone number is set (String)*/
+	public void setPhoneNum(String pnum){
+		phoneNumber = pnum;
+		db.updateGuest(this);
+	}
+	
+	/*@return guest phone number*/
+	public String getPhoneNum(){
+		return phoneNumber;
+	}
+	
+	/*@param guest id is set (int)*/
+	public void setId(int i){
+		id = i;
+		db.updateGuest(this);
 	}
 
 	/*@return guest id*/
-	public int getGuestId(){
-		return this.guestId.get();
-	}
-
-	/*@param guest id is set (int)*/
-	public void setGuestId(int id){
-		this.guestId.set(id);
+	public int getId(){
+		return id;
 	}
 	
-	public IntegerProperty guestIdProperty(){
-		return guestId;
+	public List<Reservation> getReservationList(){
+		return reservationList;
 	}
-	
-	/*@return guest confirmation number*/
-	public int getConfirmationNumber(){
-		return this.confirmationNumber.get();
+	public int getAmountOfReservations() {
+		return amountOfReservations;
 	}
-	
-	/*@param guest confirmation number is set (int)*/
-	public void setConfirmationNumber(int num){
-		this.confirmationNumber.set(num);
+	/*Get all reservations Ids in one string */
+	public String getReservationIds() {
+		String output = "";
+		for(int count=0;count<reservationList.size();count++) {
+			output += reservationList.get(count).getId() + " ";
+		}
+		return output;
 	}
-
-	public IntegerProperty confirmationNumberProperty(){
-		return confirmationNumber;
+	public int getAge() {
+		return age;
+	}
+	public String toString() {
+		return "Name: " + firstName + " " + lastName + "\tID: " + id;
 	}
 
 }

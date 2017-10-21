@@ -1,104 +1,127 @@
-package hrms.Model;
 /*The Room object is created when guest adds room to their reservation.*/
+package hrms.Model;
+
 import java.util.List;
 
-import javafx.beans.property.*;
-
 public class Room {
-	private IntegerProperty roomId; /*room id*/
-	private StringProperty roomDescription; /*room description*/
-	private DoubleProperty roomPrice; /*room price*/
-	private BooleanProperty roomAvailability; /*room availability*/
-	
-	private List<Amenity> roomAmenitiesList; /*List of amenities attached to the room*/
-
-	public Room(){
-		roomId = new SimpleIntegerProperty();
-		roomDescription = new SimpleStringProperty();
-		roomPrice = new SimpleDoubleProperty();
-		roomAvailability = new SimpleBooleanProperty();
-	}
-	/*@return room id*/
-	public int getRoomId(){
-		return this.roomId.get();
-	}
+	private int id; /*Room id of Room*/
+	private String description;/*Room description of Room*/
+//	private Guest primaryPerson; /*Guest that has Room on hold*/ this can probably go in the reservation side 
+//	private List<Guest> secondaryPeople; questionable if we need to add the info of guest staying in room
+	private List<Amenity> amenityList; /*List of amenities attached to the room*/
+	private double roomPrice; /*room price*/
+	private boolean availability; /*if the room is available or not*/
+	private double totalPrice;
+	private double totalAmenityPrice;
+	private int amountOfGuests, amountOfAmenities;
+	private Database db = new Database();
 	
 	/*@param room id is set (int)*/
-	public void setRoomId(int id){
-		this.roomId.set(id);
+	public void setRoomId(int i){
+		id = i;
 	}
-	public IntegerProperty roomIdProperty(){
-		return roomId;
+	
+	/*@return room id*/
+	public int getId(){
+		return id;
+	}
+	
+	/*@param room description is set (String)*/
+	public void setRoomDescription(String desc){
+		description = desc;
+		db.updateRoom(this);
 	}
 	
 	/*@return room description*/
 	public String getRoomDescription(){
-		return this.roomDescription.get();
-	}
-	
-	/*@param room description is set (String)*/
-	public void setRoomDescription(String description){
-		this.roomDescription.set(description);
-	}
-	
-	public StringProperty roomDescriptionProperty(){
-		return roomDescription;
-	}
-	
-	/*@return room price*/
-	public double getRoomPrice(){
-		return this.roomPrice.get();
+		return description;
 	}
 	
 	/*@param room price is set (double)*/
 	public void setRoomPrice(double price){
-		this.roomPrice.set(price);
+		roomPrice = price;
+		updateTotalPrice();
+		db.updateRoom(this);
 	}
 	
-	public DoubleProperty roomPriceProperty(){
+	/*@return room price*/
+	public double getRoomPrice(){
 		return roomPrice;
 	}
-
-	/*@return availability*/
-	public boolean getRoomAvailability(){
-		return this.roomAvailability.get();
+	
+	public double getAmenityPrice() {
+		for(int count = 0;count<amenityList.size();count++) {
+			totalAmenityPrice += amenityList.get(count).getPrice();
+		}
+		return totalAmenityPrice;
+	}
+	public double getTotalPrice() {
+		totalPrice = getAmenityPrice() + roomPrice;
+		return totalPrice;
+	}
+	public void updateTotalPrice() {
+		totalPrice = getAmenityPrice() + roomPrice;
 	}
 	
-	/*@param room price is set (double)*/
-	public void setRoomAvailability(boolean status){
-		this.roomAvailability.set(status);
+	/*Add amenity to roomAmenitiesList
+	 * @pre: amenity exists in database
+	 * @post: amenity added to roomAmenitiesList
+	 * @post: roomAmenitiesList.size() > 0*/
+	public void addAmenity(Amenity a){
+		amenityList.add(a);
+		updateTotalPrice();
+		db.updateRoom(this);
 	}
 	
-	public BooleanProperty roomAvailabilityProperty(){
-		return roomAvailability;
+	/*Remove amenity from roomAmenitiesList
+	 * @pre: amenity exists in roomAmenitiesList
+	 * @pre: roomAmenitiesList.size() > 0
+	 * @post: decrease size of roomAmenitiesList*/
+	public void removeAmenity(Amenity a){
+		amenityList.remove(a);
+		updateTotalPrice();
+		db.updateRoom(this);
 	}
 	
-	//what to do with these
-//	
-//	/*Add amenity to roomAmenitiesList
-//	 * @pre: amenity exists in database
-//	 * @post: amenity added to roomAmenitiesList
-//	 * @post: roomAmenitiesList.size() > 0*/
-//	public void addAmenity(Amenity a){}
-//	
-//	/*Remove amenity from roomAmenitiesList
-//	 * @pre: amenity exists in roomAmenitiesList
-//	 * @pre: roomAmenitiesList.size() > 0
-//	 * @post: decrease size of roomAmenitiesList*/
-//	public void removeAmenity(Amenity a){}
-//	
-//	/*Returns list of amenities for Room*/
-//	public List<Amenity> viewRoomAmenitiesList(){}
-//	
-//	/*Clears all existing data attached to room
-//	 * @pre: roomId exists in database
-//	 * @post: room data cleared from database
-//	 * */
-//	public void clearRoom(){}
-//	
-//	/*Sets the Room to be available or unavailable
-//	 * @pre: room must exist
-//	 * @post: flag is set*/
-//	public void setRoomAvailability(boolean b){}
-//	
+	/*Returns list of amenities for Room*/
+	public List<Amenity> getAmenityList(){
+		return amenityList;
+	}
+	
+	/*Clears all existing data attached to room
+	 * @pre: roomId exists in database
+	 * @post: room data cleared from database
+	 * */
+	public void clearRoom(){
+		amenityList.clear();
+		totalPrice = 0.0;
+		totalAmenityPrice = 0.0;
+		amountOfGuests = 0;
+		amountOfAmenities = 0;
+		availability = true;
+	}
+	
+	/*Sets the Room to be available or unavailable
+	 * @pre: room must exist
+	 * @post: flag is set*/
+	public void setAvailability(boolean b){
+		availability = b;
+	}
+	
+	public boolean getAvailability() {
+		return availability;
+	}
+	public String getAmenityIds() {
+		String output = "";
+		for(int count=0;count<amenityList.size();count++) {
+			output += amenityList.get(count).getId() + " ";
+		}
+		return output;
+	}
+	public int getAmountOfAmenities() {
+		return amountOfAmenities;
+	}
+	public int getAmountOfGuests() {
+		return amountOfGuests;
+	}
 }
