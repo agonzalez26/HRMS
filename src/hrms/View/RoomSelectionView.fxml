@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -9,81 +14,85 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="roomSelectionView" fx:id="roomSelectionView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: #7689a9;" 
-            xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hrms.Controller.RoomSelectionViewController">
+
+<StackPane style="-fx-background-color: #7689a9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hrms.Controller.RoomSelectionViewController">
    <children>
-      <Label prefHeight="29.0" prefWidth="1025.0" text="Hotel Reservation Management System" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Button id="logInButton" fx:id="logInButton" onAction="#handleButtonAction" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #152d54;" text="       Login        " textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button id="backButton" fx:id="backButton" onAction="#handleButtonAction" layoutY="561.0" mnemonicParsing="false" style="-fx-background-color: #152d54;" text="      Back      " textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button id="nextButton" fx:id="nextButton" onAction="#handleButtonAction" layoutX="904.0" layoutY="561.0" mnemonicParsing="false" style="-fx-background-color: #152d54;" text="      Next      " textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5f7a94" height="444.0" layoutX="154.0" layoutY="91.0" stroke="WHITE" strokeType="INSIDE" width="726.0" />
-      <Button id="cancelButton" fx:id="cancelButton" onAction="#handleButtonAction" layoutX="889.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #152d54;" text="      Cancel      " textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <TextField id="billAmountText" fx:id="billAmountText" editable="false" layoutX="513.0" layoutY="568.0" prefHeight="25.0" prefWidth="163.0" />
-      <Label layoutX="390.0" layoutY="565.0" prefHeight="29.0" prefWidth="110.0" text="Bill Amount:" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="288.0" layoutY="114.0" prefHeight="35.0" prefWidth="482.0" style="-fx-background-color: #152d54;" text="Select Your Room Locations" textFill="WHITE">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5f7a94" height="444.0" layoutX="9.0" layoutY="89.0" stroke="WHITE" strokeType="INSIDE" width="133.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5f7a94" height="444.0" layoutX="890.0" layoutY="90.0" stroke="WHITE" strokeType="INSIDE" width="133.0" />
-      <Label layoutX="30.0" layoutY="101.0" text="Room Type" textFill="WHITE" underline="true">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="906.0" layoutY="101.0" text="Room Status" textFill="WHITE" underline="true">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TabPane id="roomSelection" layoutX="236.0" layoutY="161.0" prefHeight="337.0" prefWidth="565.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab id="floor1tab" fx:id="floor1tab" closable="false" text="Floor 1">
-            <content>
-              <AnchorPane id="floor1plan" fx:id="floor1plan" minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="582.0" style="-fx-background-color: white;"/>
-            </content>
-          </Tab>
-          <Tab id="floor2tab" fx:id="floor2tab" closable="false" text="Floor 2">
-            <content>
-              <AnchorPane id="floor2plan" fx:id="floor2plan" minHeight="0.0" minWidth="0.0" prefHeight="308.0" prefWidth="684.0" style="-fx-background-color: white;" />
-            </content>
-          </Tab>
-            <Tab id="floor3tab" fx:id="floor3tab" closable="false" text="Floor 3">
-               <content>
-                  <AnchorPane id="floor3plan" fx:id="floor3plan" minHeight="0.0" minWidth="0.0" prefHeight="421.0" prefWidth="839.0" style="-fx-background-color: white;" />
-               </content>
-            </Tab>
-            <Tab id="floor4tab" fx:id="floor4tab" closable="false" text="Floor 4">
-               <content>
-                  <AnchorPane id="floor4plan" fx:id="floor4plan" minHeight="0.0" minWidth="0.0" prefHeight="417.0" prefWidth="775.0" style="-fx-background-color: white;" />
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
+      <AnchorPane id="roomSelectionView" fx:id="roomSelectionView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: #7689a9;" StackPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="29.0" prefWidth="1025.0" text="Hotel Reservation Management System" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button id="logInButton" fx:id="logInButton" layoutY="35.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #152d54;" text="       Login        " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button id="backButton" fx:id="backButton" layoutY="561.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #152d54;" text="      Back      " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button id="nextButton" fx:id="nextButton" layoutX="904.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #152d54;" text="      Next      " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5f7a94" height="444.0" layoutX="154.0" layoutY="91.0" stroke="WHITE" strokeType="INSIDE" width="726.0" />
+            <Button id="cancelButton" fx:id="cancelButton" layoutX="889.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #152d54;" text="      Cancel      " textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextField id="billAmountText" fx:id="billAmountText" editable="false" layoutX="513.0" layoutY="568.0" prefHeight="25.0" prefWidth="163.0" />
+            <Label layoutX="390.0" layoutY="565.0" prefHeight="29.0" prefWidth="110.0" text="Bill Amount:" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="288.0" layoutY="114.0" prefHeight="35.0" prefWidth="482.0" style="-fx-background-color: #152d54;" text="Select Your Room Locations" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5f7a94" height="444.0" layoutX="9.0" layoutY="89.0" stroke="WHITE" strokeType="INSIDE" width="133.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5f7a94" height="444.0" layoutX="890.0" layoutY="90.0" stroke="WHITE" strokeType="INSIDE" width="133.0" />
+            <Label layoutX="30.0" layoutY="101.0" text="Room Type" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="906.0" layoutY="101.0" text="Room Status" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TabPane id="roomSelection" layoutX="236.0" layoutY="161.0" prefHeight="337.0" prefWidth="565.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab id="floor1tab" fx:id="floor1tab" closable="false" text="Floor 1">
+                  <content>
+                    <AnchorPane id="floor1plan" fx:id="floor1plan" minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="582.0" style="-fx-background-color: white;" />
+                  </content>
+                </Tab>
+                <Tab id="floor2tab" fx:id="floor2tab" closable="false" text="Floor 2">
+                  <content>
+                    <AnchorPane id="floor2plan" fx:id="floor2plan" minHeight="0.0" minWidth="0.0" prefHeight="308.0" prefWidth="684.0" style="-fx-background-color: white;" />
+                  </content>
+                </Tab>
+                  <Tab id="floor3tab" fx:id="floor3tab" closable="false" text="Floor 3">
+                     <content>
+                        <AnchorPane id="floor3plan" fx:id="floor3plan" minHeight="0.0" minWidth="0.0" prefHeight="421.0" prefWidth="839.0" style="-fx-background-color: white;" />
+                     </content>
+                  </Tab>
+                  <Tab id="floor4tab" fx:id="floor4tab" closable="false" text="Floor 4">
+                     <content>
+                        <AnchorPane id="floor4plan" fx:id="floor4plan" minHeight="0.0" minWidth="0.0" prefHeight="417.0" prefWidth="775.0" style="-fx-background-color: white;" />
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>
