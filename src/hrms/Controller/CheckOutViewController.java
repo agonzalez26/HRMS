@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The CheckOutController will manage all functionalities for the CheckOutView.
  */
 package hrms.Controller;
 
@@ -24,60 +22,60 @@ import javafx.stage.Stage;
  *
  * @author agonzalez26
  */
-public class CheckOutViewController implements Initializable 
-{
 
-    @FXML
-    private AnchorPane checkOutView;
-    @FXML
-    private Button logInButton;
-    @FXML
-    private Button checkOutButton;
-    @FXML
-    private Button cancelButton;
-      @FXML
-    private Stage stage = null;
-    @FXML
-    private Parent root = null;
+public class CheckOutViewController implements Initializable {
+	// variables
+	@FXML
+	private AnchorPane checkOutView;
+	@FXML
+	private Button logInButton;
+	@FXML
+	private Button checkOutButton;
+	@FXML
+	private Button cancelButton;
+	@FXML
+	private Stage stage = null;
+	@FXML
+	private Parent root = null;
 
-        @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException
-    {
-        //checks which button does what
-         if(event.getSource() == logInButton)
-         {
-            //get reference to the button's stage         
-            stage = (Stage) logInButton.getScene().getWindow();
-            //load up OTHER FXML document
-            root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
-        }
-         else if(event.getSource() == checkOutButton)
-         {
-            stage = (Stage) checkOutButton.getScene().getWindow();
-            root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-         }
-         else if( event.getSource() == cancelButton)
-         {
-            stage = (Stage) cancelButton.getScene().getWindow();
-            root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-         }
-         else
-         {
-            System.exit(0);
-        }
-        //create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {
-        // TODO
-    }    
-    
+	/*
+	 * Function will handle all button action events
+	 */
+	@FXML
+	private void handleButtonAction(ActionEvent event) throws IOException {
+		// if login button selected
+		if (event.getSource() == logInButton) {
+			// get reference to the button's stage
+			stage = (Stage) logInButton.getScene().getWindow();
+			// load up OTHER FXML document
+			root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
+		}
+		// if checkout button selected
+		else if (event.getSource() == checkOutButton) {
+			stage = (Stage) checkOutButton.getScene().getWindow();
+			root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+		}
+		// if cancel button selected
+		else if (event.getSource() == cancelButton) {
+			stage = (Stage) cancelButton.getScene().getWindow();
+			root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+		}
+		// exit the application
+		else {
+			System.exit(0);
+		}
+		// create a new scene with root and set the stage
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+
+	/**
+	 * Initializes the controller class.
+	 */
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		// TODO
+	}
+
 }

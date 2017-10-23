@@ -71,12 +71,12 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField id="employeeId" fx:id="employeeId" promptText="First Name" GridPane.columnIndex="1">
+                  <TextField id="employeeId" fx:id="employeeId" promptText="Employee Id" GridPane.columnIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField id="employeePassword" fx:id="employeePassword" promptText="Last Name" GridPane.columnIndex="1" 
+                  <TextField id="employeePassword" fx:id="employeePassword" promptText="Employee Password" GridPane.columnIndex="1" 
                              GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />

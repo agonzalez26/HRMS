@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The HomeViewController handles functionalities for HomeView.
  */
 package hrms.Controller;
 
@@ -26,126 +24,184 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
-//            boolean isNumeric = s.chars().allMatch( Character::isDigit );
-
 /**
+ * 
  *
  * @author agonzalez26
  */
+
 public class HomeViewController implements Initializable {
-    @FXML 
-    private Button checkInButton;
-    @FXML
-    private AnchorPane homeView;
-    @FXML
-    private Button logInButton;
-    @FXML
-    private Button checkOutButton;
-    @FXML
-    private TextField confirmationNumber;
-    @FXML
-    private Button bookReservationButton;
-    @FXML
-    private Stage stage = null;
-    @FXML
-    private Parent root = null;
-    
-    @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException{
-        //checks which button does what
-         if (event.getSource() == checkInButton) 
-        {
-            String s = confirmationNumber.getText();
-            if(s.isEmpty()){
-                EmptyError();
-                //get reference to the button's stage         
-                stage = (Stage) checkInButton.getScene().getWindow();
-                //load up OTHER FXML document
-                root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-            }else if(!isNumeric(s)){
-                ConfirmationError();
-                //get reference to the button's stage         
-                stage = (Stage) checkInButton.getScene().getWindow();
-                //load up OTHER FXML document
-                root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-            }else{              
-                //get reference to the button's stage         
-                stage = (Stage) checkInButton.getScene().getWindow();
-                //load up OTHER FXML document
-                root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
-            }    
+	// variables
+	@FXML
+	private Button checkInButton;
+	@FXML
+	private AnchorPane homeView;
+	@FXML
+	private Button logInButton;
+	@FXML
+	private Button checkOutButton;
+	@FXML
+	private TextField confirmationNumber;
+	@FXML
+	private Button bookReservationButton;
+	@FXML
+	private Stage stage = null;
+	@FXML
+	private Parent root = null;
 
-        }else if(event.getSource() == bookReservationButton){
-            //get reference to the button's stage         
-            stage = (Stage) bookReservationButton.getScene().getWindow();
-            //load up OTHER FXML document
-            root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml")); 
-            
-         }else if(event.getSource() == logInButton){
-            //get reference to the button's stage         
-            stage = (Stage) logInButton.getScene().getWindow();
-            //load up OTHER FXML document
-            root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
-        }else if(event.getSource() == checkOutButton){
-            
-            String s = confirmationNumber.getText();
-            if(s.isEmpty()){
-                EmptyError();
-                //get reference to the button's stage         
-                stage = (Stage) checkInButton.getScene().getWindow();
-                //load up OTHER FXML document
-                root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-            }else if(!isNumeric(s)){
-                ConfirmationError();
-                //get reference to the button's stage         
-                stage = (Stage) checkInButton.getScene().getWindow();
-                //load up OTHER FXML document
-                root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-            }else{              
-                //get reference to the button's stage         
-                stage = (Stage) checkInButton.getScene().getWindow();
-                //load up OTHER FXML document
-                root = FXMLLoader.load(HRMS.class.getResource("View/CheckOutView.fxml"));
-            }           
+	/*
+	 * Function handles all button action events
+	 */
+	@FXML
+	private void handleButtonAction(ActionEvent event) throws IOException {
+		// if checkin button selected
+		if (event.getSource() == checkInButton) {
+			// retrieve confirmationNumber textField input
+			String s = confirmationNumber.getText();
 
-         }else{
-            System.exit(0);
-        }
-        //create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+			// checks if input is empty
+			if (s.isEmpty()) {
+				// calls empty error method
+				EmptyError();
 
-    private void ConfirmationError() 
-    {
-        Alert a = new Alert(Alert.AlertType.ERROR , "Incorrect Confirmation Number", ButtonType.OK);
-        Optional<ButtonType> result =  a.showAndWait();
-        
-    }
-    
-    private void EmptyError()
-    {
-        Alert a = new Alert(Alert.AlertType.ERROR , "Missing Confirmation Number", ButtonType.OK);
-        Optional<ButtonType> result =  a.showAndWait();  
-    }
+				// get reference to the button's stage
+				stage = (Stage) checkInButton.getScene().getWindow();
+				// load up OTHER FXML document
+				root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
 
-    public static boolean isNumeric(String str)  
-    {  
-        try  
-        {  
-            int d = Integer.parseInt(str);  
-        }  
-        catch(NumberFormatException nfe)  
-        {  
-            return false;  
-        }  
-        return true;  
-    }
- 
+			}
+			// if not empty and is not in integer
+			else if (!isNumeric(s)) {
+				// calls confirmation error method
+				ConfirmationError();
+
+				// get reference to the button's stage
+				stage = (Stage) checkInButton.getScene().getWindow();
+				// load up OTHER FXML document
+				root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+
+			}
+			// everything correct
+			else {
+				// get reference to the button's stage
+				stage = (Stage) checkInButton.getScene().getWindow();
+				// load up OTHER FXML document
+				root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
+			}
+
+		}
+		// if book reservation button
+		else if (event.getSource() == bookReservationButton) {
+			// get reference to the button's stage
+			stage = (Stage) bookReservationButton.getScene().getWindow();
+			// load up OTHER FXML document
+			root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
+
+		}
+		// if login button selected
+		else if (event.getSource() == logInButton) {
+			// get reference to the button's stage
+			stage = (Stage) logInButton.getScene().getWindow();
+			// load up OTHER FXML document
+			root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
+
+		}
+		// if checkout button selected
+		else if (event.getSource() == checkOutButton) {
+			// retrieves textfield input
+			String s = confirmationNumber.getText();
+			// checks if field is empty
+			if (s.isEmpty()) {
+				// calls empty error method
+				EmptyError();
+
+				// get reference to the button's stage
+				stage = (Stage) checkInButton.getScene().getWindow();
+				// load up OTHER FXML document
+				root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+
+			}
+			// checks is input is an integer
+			else if (!isNumeric(s)) {
+				// calls confirmation error method
+				ConfirmationError();
+
+				// get reference to the button's stage
+				stage = (Stage) checkInButton.getScene().getWindow();
+				// load up OTHER FXML document
+				root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+
+			}
+			// everything correct
+			else {
+				// get reference to the button's stage
+				stage = (Stage) checkInButton.getScene().getWindow();
+				// load up OTHER FXML document
+				root = FXMLLoader.load(HRMS.class.getResource("View/CheckOutView.fxml"));
+			}
+
+		}
+		// exit application
+		else {
+			System.exit(0);
+		}
+
+		// create a new scene with root and set the stage
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		// TODO
+	}
+
+	/*
+	 * Method called when the confirmation number does not exist in the database
+	 * 
+	 * @pre: HomeView
+	 * 
+	 * @post: ConfirmationError Alert display, HomeView
+	 */
+	private void ConfirmationError() {
+		Alert a = new Alert(Alert.AlertType.ERROR, "Incorrect Confirmation Number", ButtonType.OK);
+		Optional<ButtonType> result = a.showAndWait();
+
+	}
+
+	/*
+	 * Method called when the confirmation number field is empty
+	 * 
+	 * @pre: HomeView
+	 * 
+	 * @post: EmptyError Alert display, HomeView
+	 */
+	private void EmptyError() {
+		Alert a = new Alert(Alert.AlertType.ERROR, "Missing Confirmation Number", ButtonType.OK);
+		Optional<ButtonType> result = a.showAndWait();
+	}
+
+	/*
+	 * Method returns if the employee id is a integer
+	 * 
+	 * @pre: integer value in textfield
+	 * 
+	 * @post: true or false if integer number in textfield
+	 */
+	public static boolean isNumeric(String str) {
+		// try catch to check if the input is an integer
+		try {
+			// parse the string into an integer
+			int d = Integer.parseInt(str);
+		}
+		// catches if the string is not an integer
+		catch (NumberFormatException nfe) {
+
+			return false;
+		}
+		// the string is an integer
+		return true;
+	}
+
 }
