@@ -2,25 +2,46 @@
 //*****Bill object/class not needed
 package hrms.Model;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class Bill {
-    private int billId;
-    private double billAmount;
+    private IntegerProperty billId; /*bill id*/
+    private DoubleProperty billAmount; /*bill amount*/
     
+    public Bill(){
+	billId = new SimpleIntegerProperty();
+	billAmount = new SimpleDoubleProperty();
+    }
+	
 	/*@param bill id is set(int)*/
-    public void setBillId(int id){}
+    public void setBillId(int id){
+    	this.billId.set(id);
+    }
     
     /*@return bill id*/
     public int getBillId(){
-        return billId;
-            
+    	return this.billId.get();
+    }
+    
+    public IntegerProperty billIdProperty(){
+    	return billId;
     }
     
     /*@param bill amount is set(double)*/
-    public void setBillAmount(double amount){}
+    public void setBillAmount(double amount){
+    	this.billAmount.set(amount);
+    }
     
     /*@return bill amount*/
     public double getBillAmount(){
-        return billAmount;
+    	return this.billAmount.get();
+    }
+    
+    public DoubleProperty billAmountProperty(){
+    	return billAmount;
     }
     
     /*@param bill amount increased (double)

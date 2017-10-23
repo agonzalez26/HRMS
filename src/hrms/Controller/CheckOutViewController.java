@@ -24,7 +24,8 @@ import javafx.stage.Stage;
  *
  * @author agonzalez26
  */
-public class CheckOutViewController implements Initializable {
+public class CheckOutViewController implements Initializable 
+{
 
     @FXML
     private AnchorPane checkOutView;
@@ -40,20 +41,28 @@ public class CheckOutViewController implements Initializable {
     private Parent root = null;
 
         @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException{
+    private void handleButtonAction(ActionEvent event) throws IOException
+    {
         //checks which button does what
-         if(event.getSource() == logInButton){
+         if(event.getSource() == logInButton)
+         {
             //get reference to the button's stage         
             stage = (Stage) logInButton.getScene().getWindow();
             //load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
-        }else if(event.getSource() == checkOutButton){
+        }
+         else if(event.getSource() == checkOutButton)
+         {
             stage = (Stage) checkOutButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-         }else if( event.getSource() == cancelButton){
+         }
+         else if( event.getSource() == cancelButton)
+         {
             stage = (Stage) cancelButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-         }else{
+         }
+         else
+         {
             System.exit(0);
         }
         //create a new scene with root and set the stage
@@ -61,11 +70,13 @@ public class CheckOutViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) 
+    {
         // TODO
     }    
     

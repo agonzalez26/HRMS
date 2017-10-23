@@ -46,25 +46,35 @@ public class AmenityViewController implements Initializable {
     @FXML
     private TextField guestLastName;
     @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException{
+    private void handleButtonAction(ActionEvent event) throws IOException
+    {
         //checks which button does what
-         if(event.getSource() == logInButton){
+         if(event.getSource() == logInButton)
+         {
             //get reference to the button's stage         
             stage = (Stage) logInButton.getScene().getWindow();
             //load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
-        }else if(event.getSource() == backButton){
+        }
+         else if(event.getSource() == backButton)
+         {
              //get reference to the button's stage         
             stage = (Stage) backButton.getScene().getWindow();
             //load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/RoomSelectionView.fxml"));
-         }else if(event.getSource() == nextButton){
+         }
+         else if(event.getSource() == nextButton)
+         {
             stage = (Stage) nextButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/ConfirmationView.fxml"));
-         }else if( event.getSource() == cancelButton){
+         }
+         else if( event.getSource() == cancelButton)
+         {
             stage = (Stage) cancelButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-         }else{
+         }
+         else
+         {
             System.exit(0);
         }
         //create a new scene with root and set the stage
@@ -77,8 +87,9 @@ public class AmenityViewController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) 
+    {
         // TODO
     }    
-    
+
 }

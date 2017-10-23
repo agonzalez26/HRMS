@@ -116,7 +116,7 @@ public class Database {
 	public void deleteAmenity(Amenity a) {											//delete amenity and any related data from database only
 		try {
 			PreparedStatement prep = c.prepareStatement("DELETE FROM Amenities WHERE id = ?;");
-			prep.setInt(1, a.getId());
+			prep.setInt(1, a.getAmenityId());
 			prep.execute();
 		}catch(Exception e) {
 			System.out.println("\nError 13:\n" + e.getMessage());
@@ -180,10 +180,10 @@ public class Database {
 		try {
 			PreparedStatement prep = c.prepareStatement("UPDATE Amenities SET name = ?, description = ?"
 					+ " price = ? WHERE id = ?");
-			prep.setString(1, a.getName());
-			prep.setString(2, a.getDescription());
-			prep.setDouble(3, a.getPrice());
-			prep.setInt(4, a.getId());
+			prep.setString(1, a.getAmenityName());
+			prep.setString(2, a.getAmenityDescription());
+			prep.setDouble(3, a.getAmenityPrice());
+			prep.setInt(4, a.getAmenityId());
 			prep.execute();
 		}catch(Exception e) {
 			System.out.println("\nError 18:\n" + e.getMessage());

@@ -20,8 +20,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import hrms.HRMS;
 import hrms.Controller.*;
+import java.util.Optional;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+
+//            boolean isNumeric = s.chars().allMatch( Character::isDigit );
 
 /**
  *
@@ -50,10 +55,25 @@ public class HomeViewController implements Initializable {
         //checks which button does what
          if (event.getSource() == checkInButton) 
         {
-            //get reference to the button's stage         
-            stage = (Stage) checkInButton.getScene().getWindow();
-            //load up OTHER FXML document
-            root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
+            String s = confirmationNumber.getText();
+            if(s.isEmpty()){
+                EmptyError();
+                //get reference to the button's stage         
+                stage = (Stage) checkInButton.getScene().getWindow();
+                //load up OTHER FXML document
+                root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+            }else if(!isNumeric(s)){
+                ConfirmationError();
+                //get reference to the button's stage         
+                stage = (Stage) checkInButton.getScene().getWindow();
+                //load up OTHER FXML document
+                root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+            }else{              
+                //get reference to the button's stage         
+                stage = (Stage) checkInButton.getScene().getWindow();
+                //load up OTHER FXML document
+                root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
+            }    
 
         }else if(event.getSource() == bookReservationButton){
             //get reference to the button's stage         
@@ -67,10 +87,27 @@ public class HomeViewController implements Initializable {
             //load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
         }else if(event.getSource() == checkOutButton){
-             //get reference to the button's stage         
-            stage = (Stage) logInButton.getScene().getWindow();
-            //load up OTHER FXML document
-            root = FXMLLoader.load(HRMS.class.getResource("View/CheckOutView.fxml"));
+            
+            String s = confirmationNumber.getText();
+            if(s.isEmpty()){
+                EmptyError();
+                //get reference to the button's stage         
+                stage = (Stage) checkInButton.getScene().getWindow();
+                //load up OTHER FXML document
+                root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+            }else if(!isNumeric(s)){
+                ConfirmationError();
+                //get reference to the button's stage         
+                stage = (Stage) checkInButton.getScene().getWindow();
+                //load up OTHER FXML document
+                root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+            }else{              
+                //get reference to the button's stage         
+                stage = (Stage) checkInButton.getScene().getWindow();
+                //load up OTHER FXML document
+                root = FXMLLoader.load(HRMS.class.getResource("View/CheckOutView.fxml"));
+            }           
+
          }else{
             System.exit(0);
         }
@@ -85,6 +122,30 @@ public class HomeViewController implements Initializable {
         // TODO
     }    
 
-   
+    private void ConfirmationError() 
+    {
+        Alert a = new Alert(Alert.AlertType.ERROR , "Incorrect Confirmation Number", ButtonType.OK);
+        Optional<ButtonType> result =  a.showAndWait();
+        
+    }
     
+    private void EmptyError()
+    {
+        Alert a = new Alert(Alert.AlertType.ERROR , "Missing Confirmation Number", ButtonType.OK);
+        Optional<ButtonType> result =  a.showAndWait();  
+    }
+
+    public static boolean isNumeric(String str)  
+    {  
+        try  
+        {  
+            int d = Integer.parseInt(str);  
+        }  
+        catch(NumberFormatException nfe)  
+        {  
+            return false;  
+        }  
+        return true;  
+    }
+ 
 }

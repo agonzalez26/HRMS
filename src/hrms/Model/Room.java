@@ -6,8 +6,6 @@ import java.util.List;
 public class Room {
 	private int id; /*Room id of Room*/
 	private String description;/*Room description of Room*/
-//	private Guest primaryPerson; /*Guest that has Room on hold*/ this can probably go in the reservation side 
-//	private List<Guest> secondaryPeople; questionable if we need to add the info of guest staying in room
 	private List<Amenity> amenityList; /*List of amenities attached to the room*/
 	private double roomPrice; /*room price*/
 	private boolean availability; /*if the room is available or not*/
@@ -51,7 +49,7 @@ public class Room {
 	
 	public double getAmenityPrice() {
 		for(int count = 0;count<amenityList.size();count++) {
-			totalAmenityPrice += amenityList.get(count).getPrice();
+			totalAmenityPrice += amenityList.get(count).getAmenityPrice();
 		}
 		return totalAmenityPrice;
 	}
@@ -114,7 +112,7 @@ public class Room {
 	public String getAmenityIds() {
 		String output = "";
 		for(int count=0;count<amenityList.size();count++) {
-			output += amenityList.get(count).getId() + " ";
+			output += amenityList.get(count).getAmenityId() + " ";
 		}
 		return output;
 	}
