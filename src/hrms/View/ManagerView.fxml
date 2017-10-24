@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="employeeView" fx:id="employeeView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: #7689a9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hrms.Controller.ManagerViewController">
+<AnchorPane id="employeeView" fx:id="employeeView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: #7689a9;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hrms.Controller.ManagerViewController">
    <children>
       <Label prefHeight="29.0" prefWidth="1025.0" text="Hotel Reservation Management System" textFill="WHITE">
          <font>
@@ -64,17 +65,17 @@
                   <ImageView fitHeight="150.0" fitWidth="140.0" layoutX="18.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="150.0" fitWidth="140.0" layoutX="18.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/dollarsign.jpg" />
+                        <Image url="@../Image/dollarsign.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="150.0" fitWidth="140.0" layoutX="172.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/employee.png" />
+                        <Image url="@../Image/employee.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="150.0" fitWidth="140.0" layoutX="317.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/service.png" />
+                        <Image url="@../Image/service.png" />
                      </image>
                   </ImageView>
                </children>
