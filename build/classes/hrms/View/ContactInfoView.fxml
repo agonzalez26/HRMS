@@ -99,7 +99,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField id="guestPhoneNumber" fx:id="guestPhoneNumber" promptText="Phone Number (No Spaces)" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField id="guestPhoneNumber" fx:id="guestPhoneNumber" promptText="Phone Number (1234567890)" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -109,7 +109,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField id="guestEmailAddress" fx:id="guestEmailAddress" prefHeight="30.0" prefWidth="241.0" promptText="Email Address" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField id="guestEmailAddress" fx:id="guestEmailAddress" prefHeight="30.0" prefWidth="241.0" promptText="Email Address (apples@yahoo.com)" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -124,7 +124,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField id="guestCCNumber" fx:id="guestCCNumber" promptText="Credit Card Number" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <TextField id="guestCCNumber" fx:id="guestCCNumber" promptText="Credit Card Number (123456789123)" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font size="14.0" />
                      </font>
