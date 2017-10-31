@@ -5,7 +5,7 @@ package hrms;
  * at a hotel as well as employee functionalities to manage the hotel responsibilities.
  * */
 
-
+/*Alma, Vib, Chris, Ejiro, Asad*/
 import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;

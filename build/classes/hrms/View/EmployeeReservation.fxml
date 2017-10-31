@@ -69,8 +69,8 @@
                         <Button fx:id="updateButton" layoutX="157.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Update" />
                         <Button fx:id="deleteButton" layoutX="281.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Delete" />
                         <Button fx:id="searchButton" layoutX="370.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Search" />
-                        <TextField fx:id="confirmationNumberText" layoutX="173.0" layoutY="19.0" />
-                        <Text layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmation Number" />
+                        <TextField fx:id="reservationNumberText" layoutX="173.0" layoutY="19.0" />
+                        <Text layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation Number" />
                      </children>
                   </AnchorPane>
               </items>

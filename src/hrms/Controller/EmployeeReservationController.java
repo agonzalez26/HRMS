@@ -37,7 +37,7 @@ public class EmployeeReservationController implements Initializable {
 	@FXML
 	private Button logOutButton;
 	@FXML
-	private TextField confirmationNumberText;
+	private TextField reservationNumberText;
 	@FXML
 	private Stage stage = null;
 	@FXML
@@ -80,7 +80,7 @@ public class EmployeeReservationController implements Initializable {
 		}
 		// if search button selected
 		else if (event.getSource() == searchButton) {
-			String conNum = confirmationNumberText.getText();
+			String conNum = reservationNumberText.getText();
 			if(conNum.equals("")){
 				EmptyError();
 				
@@ -132,7 +132,7 @@ public class EmployeeReservationController implements Initializable {
 	 */
 	private void EmptyError() {
 		// creates alert that there is missing information in the textfield
-		Alert a = new Alert(Alert.AlertType.ERROR, "Missing confirmation number", ButtonType.OK);
+		Alert a = new Alert(Alert.AlertType.ERROR, "Missing reservation number", ButtonType.OK);
 		// display the alert and must click ok before returning to main window
 		Optional<ButtonType> result = a.showAndWait();
 	}
@@ -167,7 +167,7 @@ public class EmployeeReservationController implements Initializable {
 	 * @post: ConfirmationError Alert display, HomeView
 	 */
 	private void ConfirmationError() {
-		Alert a = new Alert(Alert.AlertType.ERROR, "Incorrect Confirmation Number", ButtonType.OK);
+		Alert a = new Alert(Alert.AlertType.ERROR, "Incorrect Reservation Number", ButtonType.OK);
 		Optional<ButtonType> result = a.showAndWait();
 
 	}

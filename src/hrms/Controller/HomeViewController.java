@@ -252,7 +252,7 @@ public class HomeViewController implements Initializable {
 	@FXML
 	private Button checkOutButton;
 	@FXML
-	private TextField confirmationNumber;
+	private TextField reservationNumber;
 	@FXML
 	private Button bookReservationButton;
 	@FXML
@@ -274,7 +274,7 @@ public class HomeViewController implements Initializable {
                         app.setRoomCount("0");
                         app.setChosenRooms(new ArrayList<>());
 			// retrieve confirmationNumber textField input
-			String s = confirmationNumber.getText();
+			String s = reservationNumber.getText();
 
 			// checks if input is empty
 			if (s.isEmpty()) {
@@ -329,7 +329,7 @@ public class HomeViewController implements Initializable {
 		// if checkout button selected
 		else if (event.getSource() == checkOutButton) {
 			// retrieves textfield input
-			String s = confirmationNumber.getText();
+			String s = reservationNumber.getText();
 			// checks if field is empty
 			if (s.isEmpty()) {
 				// calls empty error method
@@ -385,7 +385,7 @@ public class HomeViewController implements Initializable {
 	 * @post: ConfirmationError Alert display, HomeView
 	 */
 	private void ConfirmationError() {
-		Alert a = new Alert(Alert.AlertType.ERROR, "Incorrect Confirmation Number", ButtonType.OK);
+		Alert a = new Alert(Alert.AlertType.ERROR, "Incorrect Reservation Number", ButtonType.OK);
 		Optional<ButtonType> result = a.showAndWait();
 
 	}
@@ -398,7 +398,7 @@ public class HomeViewController implements Initializable {
 	 * @post: EmptyError Alert display, HomeView
 	 */
 	private void EmptyError() {
-		Alert a = new Alert(Alert.AlertType.ERROR, "Missing Confirmation Number", ButtonType.OK);
+		Alert a = new Alert(Alert.AlertType.ERROR, "Missing Resrvation Number", ButtonType.OK);
 		Optional<ButtonType> result = a.showAndWait();
 	}
 

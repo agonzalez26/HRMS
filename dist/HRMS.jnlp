@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="HRMS.jar" size="216514" download="eager" />
+    <jar href="HRMS.jar" size="216506" download="eager" />
     <jar href="lib\org-netbeans-modules-javafx2-scenebuilder.jar" size="86347" download="eager" />
     <jar href="lib\sqlite-jdbc-3.20.0.jar" size="6637012" download="eager" />
   </resources>

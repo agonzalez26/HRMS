@@ -1,80 +1,64 @@
 /*Amenities are services and products that are provided by the hotel that are provided by the hotel. */
 package hrms.Model;
 
-import javafx.beans.property.*;
-
 public class Amenity {
-	private Database db = new Database();
-	private IntegerProperty amenityId; /* amenity id */
-	private StringProperty amenityName;/* amenity name */
-	private StringProperty amenityDescription; /* amenity description */
-	private DoubleProperty amenityPrice; /* amenity price */
-
-	public Amenity() {
-		amenityId = new SimpleIntegerProperty();
-		amenityName = new SimpleStringProperty();
-		amenityDescription = new SimpleStringProperty();
-		amenityPrice = new SimpleDoubleProperty();
+	private int id;/*The Amenity identifier for a particular amenity.*/
+	private String name;	/*Amenity string of the name of the Amenity*/
+	private String description;	/*Amenity string that contains the description of the Amenity*/
+	private double price;	/*Amenity string that contains the price of the Amenity*/
+	private Database db = new Database("model");
+	
+	public Amenity(String n, String desc, double p) {			//constructor for new amenity
+		name = n;
+		description = desc;
+		price = p;
+		id = db.generateAmenityId();
 	}
-
-	/* @param amenity id is set(int) */
-	public void setAmenityId(int i) {
-		this.amenityId.set(i);
+	public Amenity(int i, String n, String d, double p) {								//constructor for filling in information on startup from database
+		id = i;
+		name = n;
+		description = d;
+		price = p;
+	}
+	/*@return amenity id*/
+	public int getId(){
+		return id;
+	}
+	
+	/*@param amenity name is set(String)*/
+	public void setName(String n){
+		name = n;
 		db.updateAmenity(this);
 	}
-
-	/* @return amenity id */
-	public int getAmenityId() {
-		return this.amenityId.get();
+	
+	/*@return amenity name*/
+	public String getName(){
+		return name;
 	}
-
-	public IntegerProperty amenityIdProperty() {
-		return amenityId;
-	}
-
-	/* @param amenity name is set(String) */
-	public void setAmenityName(String n) {
-		this.amenityName.set(n);
+	
+	/*@param amenity description is set(String)*/
+	public void setDescription(String desc){
+		description = desc;
 		db.updateAmenity(this);
 	}
-
-	/* @return amenity name */
-	public String getAmenityName() {
-		return this.amenityName.get();
+	
+	/*@return amenity description*/
+	public String getDescription(){
+		return description;
 	}
-
-	public StringProperty amenityNameProperty() {
-		return amenityName;
-	}
-
-	/* @param amenity description is set(String) */
-	public void setAmenityDescription(String desc) {
-		this.amenityDescription.set(desc);
+	
+	/*@param amenity price is set(double)*/
+	public void setPrice(double p){
+		price = p;
 		db.updateAmenity(this);
 	}
-
-	/* @return amenity description */
-	public String getAmenityDescription() {
-		return this.amenityDescription.get();
+	
+	/*@return amenity price*/
+	public double getPrice(){
+		return price;
 	}
-
-	public StringProperty amenityDescriptionProperty() {
-		return amenityDescription;
+	
+	public void closeDatabase() {
+		db.closeConnection();
 	}
-
-	/* @return amenity price */
-	public double getAmenityPrice() {
-		return amenityPrice.get();
-	}
-
-	/* @param amenity price is set(double) */
-	public void setAmenityPrice(double price) {
-		this.amenityPrice.set(price);
-		db.updateAmenity(this);
-	}
-
-	public DoubleProperty amenityPriceProperty() {
-		return amenityPrice;
-	}
-
 }

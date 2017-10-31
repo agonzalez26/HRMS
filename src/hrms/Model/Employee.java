@@ -4,77 +4,102 @@ import java.util.List;
 
 /*Employee object has additional functionalities for the HRMS system.*/
 
-public class Employee extends Operator {
-	private int employeeId; /* employee id */
-	private boolean EmpOrManFlag; /*
-									 * determines if a general employee or manager
-									 */
-	private List<Room> roomsList; /* list of rooms at the hotel */
-	private List<Amenity> amenitiesList; /* list of amenities at the hotel */
-	private List<Reservation> reservationsList; /*
-												 * list of reservations at hotel
-												 */
-
-	/* @param employee id is set (int) */
-	public void setEmployeeId(int id) {
+public class Employee extends Operator{
+	private int id, age; /*employee id*/
+	private String password, firstName, lastName, address, email, phoneNumber;
+	private boolean managerFlag; /*determines if a general employee or manager*/
+	//private List<Room> roomsList; /*list of rooms at the hotel*/
+	//private List<Amenity> amenitiesList; /*list of amenities at the hotel*/
+	//private List<Reservation> reservationsList; /*list of reservations at hotel*/
+	private Database db = new Database("model");
+	
+	public Employee(String fn, String ln, String ad, String e,
+			String pn, int ag, String pw, boolean mf) {		//constructor for new employee
+		firstName = fn;
+		lastName = ln;
+		address = ad;
+		email = e;
+		phoneNumber = pn;
+		age = ag;
+		password = pw;
+		managerFlag = mf;
+		id = db.generateEmployeeId();
 	}
-
-	/* @return employee id */
-	public int getEmployeeId() {
-		return employeeId;
+	public Employee(int i, String fn, String ln, String ad, String e,
+			String pn, int ag, String p, boolean mf) {		//constructor for employee initialization
+		id=i;
+		firstName = fn;
+		lastName = ln;
+		address = ad;
+		email = e;
+		phoneNumber = pn;
+		age = ag;
+		password = p;
+		managerFlag = mf;
 	}
-
-	/* @param flag is set (boolean) */
-	public void setFlag(boolean flag) {
+	public boolean matchPassword(String pw) {
+		if(pw.equals(password)) {
+			return true;
+		}
+		return false;
 	}
-
-	/* @return flag */
-	public boolean getFlag() {
-		return EmpOrManFlag;
+	public String getPassword() {
+		return password;
 	}
-
-	/*
-	 * This allows employee to delete existing reservation
-	 * 
-	 * @pre reservation exists
-	 * 
-	 * @post reservation deleted from database
-	 */
-	public void deleteReservation(Reservation r) {
+	public int getId(){
+		return id;
 	}
-
-	/*
-	 * makes changes to reservation data in database and reservation object
-	 * 
-	 * @pre reservation must exist
-	 * 
-	 * @post updated reservation
-	 */
-	public void editReservation(Reservation r) {
+	public int getAge() {
+		return age;
 	}
-
-	/*
-	 * Update Room information
-	 * 
-	 * @pre: room exists in hotel
-	 * 
-	 * @post: updated room information
-	 */
-	public void updateRoom(Room ro) {
+	public boolean getManagerFlag() {
+		return managerFlag;
 	}
-
-	/* @returns list of reservations */
-	public List<Reservation> getReservationList() {
-		return reservationsList;
+	public String getFirstName() {
+		return firstName;
 	}
-
-	/* @returns list of rooms */
-	public List<Room> getRoomList() {
-		return roomsList;
+	public String getLastName() {
+		return lastName;
 	}
-
-	/* @return list of amenities */
-	public List<Amenity> getAmenityList() {
-		return amenitiesList;
+	public String getAddress() {
+		return address;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setAge(int a) {
+		age = a;
+		db.updateEmployee(this);
+	}
+	public void setFirstName(String s) {
+		firstName = s;
+		db.updateEmployee(this);
+	}
+	public void setLastName(String s) {
+		lastName = s;
+		db.updateEmployee(this);
+	}
+	public void setAddress(String s) {
+		address = s;
+		db.updateEmployee(this);
+	}
+	public void setEmail(String s) {
+		email = s;
+		db.updateEmployee(this);
+	}
+	public void setPhoneNumber(String s) {
+		phoneNumber = s;
+		db.updateEmployee(this);
+	}
+	public void setPassword(String s) {
+		password = s;
+		db.updateEmployee(this);
+	}
+	public void setManagerFlag(Boolean b) {
+		managerFlag = b;
+		db.updateEmployee(this);
 	}
 }
