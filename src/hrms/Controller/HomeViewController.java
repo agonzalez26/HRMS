@@ -261,8 +261,6 @@ public class HomeViewController implements Initializable {
 	private Parent root = null;
         
         Application app = new Application();
-        
-
 	/*
 	 * Function handles all button action events
 	 */
@@ -275,7 +273,6 @@ public class HomeViewController implements Initializable {
                         app.setChosenRooms(new ArrayList<>());
 			// retrieve confirmationNumber textField input
 			String s = reservationNumber.getText();
-
 			// checks if input is empty
 			if (s.isEmpty()) {
 				// calls empty error method

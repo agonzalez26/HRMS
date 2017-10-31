@@ -49,9 +49,9 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <TextField id="confirmationNumber" fx:id="confirmationNumber" layoutX="516.0" layoutY="173.0" prefHeight="35.0" 
+            <TextField id="reservationNumber" fx:id="reservationNumber" layoutX="516.0" layoutY="173.0" prefHeight="35.0" 
                        prefWidth="199.0" />
-            <Label layoutX="321.0" layoutY="177.0" text="Confirmation Number:" textFill="WHITE">
+            <Label layoutX="321.0" layoutY="177.0" text="Reservation Number:" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
