@@ -13,41 +13,41 @@ import java.util.List;
  * @author Ejiroghene
  */
 public class Application {
+
     private static boolean emp = true;
     private static String guestCount = "0";
     private static String roomCount = "0";
     private static List<String> chosenRooms = new ArrayList<String>();
-    
-    
-    public void setEmp(boolean t){
+
+    public void setEmp(boolean t) {
         emp = t;
     }
-    
-    public boolean getEmp(){
+
+    public boolean getEmp() {
         return emp;
     }
-    
-    public void setGuestCount(String guestCount){
+
+    public void setGuestCount(String guestCount) {
         this.guestCount = guestCount;
     }
-    
-    public String getGuestCount(){
+
+    public String getGuestCount() {
         return guestCount;
     }
-    
-    public void setRoomCount(String roomCount){
+
+    public void setRoomCount(String roomCount) {
         this.roomCount = roomCount;
     }
-    
-    public String getRoomCount(){
+
+    public String getRoomCount() {
         return roomCount;
     }
-    
-    public void setChosenRooms(List<String> chosenRooms){
+
+    public void setChosenRooms(List<String> chosenRooms) {
         this.chosenRooms = chosenRooms;
     }
-    
-    public List<String> getChosenRooms(){
+
+    public List<String> getChosenRooms() {
         return chosenRooms;
     }
 }

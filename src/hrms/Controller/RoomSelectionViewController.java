@@ -68,39 +68,38 @@ public class RoomSelectionViewController implements Initializable {
     private Tab floor4tab;
     @FXML
     private AnchorPane floor4plan;
-      @FXML
+    @FXML
     private Stage stage = null;
     @FXML
     private Parent root = null;
-    
-    
+
     private int numRooms; //Number of rooms chosen in RoomView
     private int roomCount = 0; //Number of rooms selected by guest
     private List<String> chosenRooms = new ArrayList<String>();
-    
+
     Application app = new Application();
 
-        @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException{
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws IOException {
         //checks which button does what
-         if(event.getSource() == logInButton){
+        if (event.getSource() == logInButton) {
             //get reference to the button's stage         
             stage = (Stage) logInButton.getScene().getWindow();
             //load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
-        }else if(event.getSource() == backButton){
-             //get reference to the button's stage         
+        } else if (event.getSource() == backButton) {
+            //get reference to the button's stage         
             stage = (Stage) backButton.getScene().getWindow();
             //load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/RoomView.fxml"));
-         }else if(event.getSource() == nextButton){
+        } else if (event.getSource() == nextButton) {
             app.setChosenRooms(chosenRooms);
             stage = (Stage) nextButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/AmenityView.fxml"));
-         }else if( event.getSource() == cancelButton){
+        } else if (event.getSource() == cancelButton) {
             stage = (Stage) cancelButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-         }else{
+        } else {
             System.exit(0);
         }
         //create a new scene with root and set the stage
@@ -108,56 +107,56 @@ public class RoomSelectionViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
-    public void handleRoomAction(ActionEvent event) throws IOException{
-            Object source = event.getSource();
-            Button clickedRoom = (Button) source;
-            String roomName = clickedRoom.getId();
-        if(chosenRooms.contains(roomName)){
+
+    public void handleRoomAction(ActionEvent event) throws IOException {
+        Object source = event.getSource();
+        Button clickedRoom = (Button) source;
+        String roomName = clickedRoom.getId();
+        if (chosenRooms.contains(roomName)) {
             chosenRooms.remove(roomName);
             clickedRoom.setStyle("-fx-background-color:  #90EE90; ");
             roomCount--;
-            roomSelectedLabel.setText(roomCount+" out of "+ numRooms+" rooms selected");
-        }else{
-            if(roomCount<numRooms){//user adds rooms to their selection
+            roomSelectedLabel.setText(roomCount + " out of " + numRooms + " rooms selected");
+        } else {
+            if (roomCount < numRooms) {//user adds rooms to their selection
                 chosenRooms.add(roomName);
                 clickedRoom.setStyle("-fx-background-color:   #FFFAF0; ");
                 roomCount++;
-                roomSelectedLabel.setText(roomCount+" out of "+ numRooms+" rooms selected");
-             }else{//if user has chosen all rooms
+                roomSelectedLabel.setText(roomCount + " out of " + numRooms + " rooms selected");
+            } else {//if user has chosen all rooms
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setContentText("You have chosen the selected number of rooms");
                 alert.showAndWait();
             }
         }
-        
-        
+
     }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    public void setNumRooms(int numRooms){
+    }
+
+    public void setNumRooms(int numRooms) {
         this.numRooms = numRooms;
     }
-    
-    public void initRooms(){
-      chosenRooms = app.getChosenRooms();
-      roomCount = chosenRooms.size();
-      Scene sc = nextButton.getScene();
-     
-      for(String rooms: chosenRooms){
-          String id = "#"+rooms;
-          Button roomButton = (Button) sc.lookup(id);
-          roomButton.setStyle("-fx-background-color:   #FFFAF0; ");
-      }
-      
-      numRooms = parseInt(app.getRoomCount());
-      roomSelectedLabel.setText(roomCount+" out of "+ numRooms+" rooms selected");
+
+    public void initRooms() {
+        chosenRooms = app.getChosenRooms();
+        roomCount = chosenRooms.size();
+        Scene sc = nextButton.getScene();
+
+        for (String rooms : chosenRooms) {
+            String id = "#" + rooms;
+            Button roomButton = (Button) sc.lookup(id);
+            roomButton.setStyle("-fx-background-color:   #FFFAF0; ");
+        }
+
+        numRooms = parseInt(app.getRoomCount());
+        roomSelectedLabel.setText(roomCount + " out of " + numRooms + " rooms selected");
     }
-    
+
 }

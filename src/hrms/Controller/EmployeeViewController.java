@@ -24,71 +24,67 @@ import javafx.stage.Stage;
  * @author agonzalez26
  */
 public class EmployeeViewController implements Initializable {
-	// variables
-	@FXML
-	private AnchorPane employeeView;
-	@FXML
-	private Button logOutButton;
-	@FXML
-	private Button reservationButton;
-	@FXML
-	private Button managerButton;
-	@FXML
-	private Stage stage = null;
-	@FXML
-	private Parent root = null;
-        
-        Application app = new Application();
+    // variables
 
+    @FXML
+    private AnchorPane employeeView;
+    @FXML
+    private Button logOutButton;
+    @FXML
+    private Button reservationButton;
+    @FXML
+    private Button managerButton;
+    @FXML
+    private Stage stage = null;
+    @FXML
+    private Parent root = null;
 
-	/**
-	 * Initializes the controller class.
-	 */
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		// TODO
-                managerButton.setDisable(app.getEmp());
-	}
+    Application app = new Application();
 
-	/*
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        managerButton.setDisable(app.getEmp());
+    }
+
+    /*
 	 * Function that handles all button action events
-	 */
-	@FXML
-	private void handleButtonAction(ActionEvent event) throws IOException {
-		// if log out button selected
-		if (event.getSource() == logOutButton) {
-			// get reference to the button's stage
-			stage = (Stage) logOutButton.getScene().getWindow();
-			// load up OTHER FXML document
-			root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+     */
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws IOException {
+        // if log out button selected
+        if (event.getSource() == logOutButton) {
+            // get reference to the button's stage
+            stage = (Stage) logOutButton.getScene().getWindow();
+            // load up OTHER FXML document
+            root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
 
-		}
-		// if reservation button selected
-		else if (event.getSource() == reservationButton) {
-			stage = (Stage) reservationButton.getScene().getWindow();
-			// load up OTHER FXML document
-			root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
+        } // if reservation button selected
+        else if (event.getSource() == reservationButton) {
+            stage = (Stage) reservationButton.getScene().getWindow();
+            // load up OTHER FXML document
+            root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
 
-		}
-		// if manager button selected
-		else if (event.getSource() == managerButton) {
-			stage = (Stage) managerButton.getScene().getWindow();
-			// load up OTHER FXML document
-			root = FXMLLoader.load(HRMS.class.getResource("View/ManagerView.fxml"));
-		}
-		// exit application
-		else {
-			System.exit(0);
-		}
+        } // if manager button selected
+        else if (event.getSource() == managerButton) {
+            stage = (Stage) managerButton.getScene().getWindow();
+            // load up OTHER FXML document
+            root = FXMLLoader.load(HRMS.class.getResource("View/ManagerView.fxml"));
+        } // exit application
+        else {
+            System.exit(0);
+        }
 
-		// create a new scene with root and set the stage
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
+        // create a new scene with root and set the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }
-
 
 ///*
 // * The EmployeeViewController handles functionalities of the EmployeeView

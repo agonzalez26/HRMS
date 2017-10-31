@@ -23,156 +23,150 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class EmployeeReservationController implements Initializable {
-	// variables
-	@FXML
-	private Button searchButton;
-	@FXML
-	private Button managerButton;
-	@FXML
-	private Button roomButton;
-	@FXML
-	private Button updateButton;
-	@FXML
-	private Button deleteButton;
-	@FXML
-	private Button logOutButton;
-	@FXML
-	private TextField reservationNumberText;
-	@FXML
-	private Stage stage = null;
-	@FXML
-	private Parent root = null;
+    // variables
 
-        Application app = new Application();
-        
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-            
-            managerButton.setDisable(app.getEmp());
-	}
+    @FXML
+    private Button searchButton;
+    @FXML
+    private Button managerButton;
+    @FXML
+    private Button roomButton;
+    @FXML
+    private Button updateButton;
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private Button logOutButton;
+    @FXML
+    private TextField reservationNumberText;
+    @FXML
+    private Stage stage = null;
+    @FXML
+    private Parent root = null;
 
-	/*
+    Application app = new Application();
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        managerButton.setDisable(app.getEmp());
+    }
+
+    /*
 	 * Function that handles all button action events
-	 */
-	@FXML
-	private void handleButtonAction(ActionEvent event) throws IOException {
-		// if room button selected
-		if (event.getSource() == roomButton) {
-			// get reference to the button's stage
-			stage = (Stage) roomButton.getScene().getWindow();
-			// load up OTHER FXML document
-			root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeView.fxml"));
+     */
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws IOException {
+        // if room button selected
+        if (event.getSource() == roomButton) {
+            // get reference to the button's stage
+            stage = (Stage) roomButton.getScene().getWindow();
+            // load up OTHER FXML document
+            root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeView.fxml"));
 
-		}
-		// if update button selected
-		else if (event.getSource() == updateButton) {
-			System.out.println("Updated Reservation");
-			stage = (Stage) roomButton.getScene().getWindow();
-			root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
+        } // if update button selected
+        else if (event.getSource() == updateButton) {
+            System.out.println("Updated Reservation");
+            stage = (Stage) roomButton.getScene().getWindow();
+            root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
 
-		}
-		// if delete button selected
-		else if (event.getSource() == deleteButton) {
-			System.out.println("Deleted Reservation");
-			stage = (Stage) roomButton.getScene().getWindow();
-			root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
+        } // if delete button selected
+        else if (event.getSource() == deleteButton) {
+            System.out.println("Deleted Reservation");
+            stage = (Stage) roomButton.getScene().getWindow();
+            root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
 
-		}
-		// if search button selected
-		else if (event.getSource() == searchButton) {
-			String conNum = reservationNumberText.getText();
-			if(conNum.equals("")){
-				EmptyError();
-				
-				stage = (Stage) roomButton.getScene().getWindow();
-				root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
-				
-			}else if(!isNumeric(conNum)){
-				
-				ConfirmationError();
-				stage = (Stage) roomButton.getScene().getWindow();
-				root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
-			
-			}else{
-				System.out.println("Showing matched reservations");
-				stage = (Stage) roomButton.getScene().getWindow();
-				root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
-				
-			}
-		}
-		// if manager button selected
-		else if (event.getSource() == managerButton) {
-			stage = (Stage) managerButton.getScene().getWindow();
-			root = FXMLLoader.load(HRMS.class.getResource("View/ManagerView.fxml"));
+        } // if search button selected
+        else if (event.getSource() == searchButton) {
+            String conNum = reservationNumberText.getText();
+            if (conNum.equals("")) {
+                EmptyError();
 
-		}
-		// if logout button selected
-		else if (event.getSource() == logOutButton) {
-			stage = (Stage) roomButton.getScene().getWindow();
-			root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+                stage = (Stage) roomButton.getScene().getWindow();
+                root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
 
-		}
-		// exit application
-		else {
-			System.exit(0);
-		}
+            } else if (!isNumeric(conNum)) {
 
-		// create a new scene with root and set the stage
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+                ConfirmationError();
+                stage = (Stage) roomButton.getScene().getWindow();
+                root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
 
-	}
-	/*
+            } else {
+                System.out.println("Showing matched reservations");
+                stage = (Stage) roomButton.getScene().getWindow();
+                root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
+
+            }
+        } // if manager button selected
+        else if (event.getSource() == managerButton) {
+            stage = (Stage) managerButton.getScene().getWindow();
+            root = FXMLLoader.load(HRMS.class.getResource("View/ManagerView.fxml"));
+
+        } // if logout button selected
+        else if (event.getSource() == logOutButton) {
+            stage = (Stage) roomButton.getScene().getWindow();
+            root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+
+        } // exit application
+        else {
+            System.exit(0);
+        }
+
+        // create a new scene with root and set the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    /*
 	 * Method called when textfield, confirmation number is empty
 	 * 
 	 * @pre: database is accessible, EmployeeReservationView
 	 * 
 	 * @post: filled textfield, EmployeeReservationView
-	 */
-	private void EmptyError() {
-		// creates alert that there is missing information in the textfield
-		Alert a = new Alert(Alert.AlertType.ERROR, "Missing reservation number", ButtonType.OK);
-		// display the alert and must click ok before returning to main window
-		Optional<ButtonType> result = a.showAndWait();
-	}
-	
-	/*
+     */
+    private void EmptyError() {
+        // creates alert that there is missing information in the textfield
+        Alert a = new Alert(Alert.AlertType.ERROR, "Missing reservation number", ButtonType.OK);
+        // display the alert and must click ok before returning to main window
+        Optional<ButtonType> result = a.showAndWait();
+    }
+
+    /*
 	 * Method returns if the employee id is a integer
 	 * 
 	 * @pre: integer value in textfield
 	 * 
 	 * @post: true or false if integer number in textfield
-	 */
-	public static boolean isNumeric(String str) {
-		// try catch to check if the input is an integer
-		try {
-			// parse the string into an integer
-			int d = Integer.parseInt(str);
-		}
-		// catches if the string is not an integer
-		catch (NumberFormatException nfe) {
+     */
+    public static boolean isNumeric(String str) {
+        // try catch to check if the input is an integer
+        try {
+            // parse the string into an integer
+            int d = Integer.parseInt(str);
+        } // catches if the string is not an integer
+        catch (NumberFormatException nfe) {
 
-			return false;
-		}
-		// the string is an integer
-		return true;
-	}
-	
-	/*
+            return false;
+        }
+        // the string is an integer
+        return true;
+    }
+
+    /*
 	 * Method called when the confirmation number does not exist in the database
 	 * 
 	 * @pre: HomeView
 	 * 
 	 * @post: ConfirmationError Alert display, HomeView
-	 */
-	private void ConfirmationError() {
-		Alert a = new Alert(Alert.AlertType.ERROR, "Incorrect Reservation Number", ButtonType.OK);
-		Optional<ButtonType> result = a.showAndWait();
+     */
+    private void ConfirmationError() {
+        Alert a = new Alert(Alert.AlertType.ERROR, "Incorrect Reservation Number", ButtonType.OK);
+        Optional<ButtonType> result = a.showAndWait();
 
-	}
+    }
 }
-
 
 ///*
 // * EmployeeReservationController handles functionalities of the EmployeeReservationView.
