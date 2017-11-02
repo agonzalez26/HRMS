@@ -34,6 +34,7 @@ public class HRMS extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        
         /*
 		 * Loads the HRMS application
          */

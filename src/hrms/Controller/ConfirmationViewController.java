@@ -33,17 +33,15 @@ public class ConfirmationViewController implements Initializable {
     @FXML
     private Button backButton;
     @FXML
-    private Button nextButton;
-    @FXML
     private Button cancelButton;
     @FXML
     private TextField billAmountText;
     @FXML
     private TextField confirmationNumberText;
-    @FXML
     private Stage stage = null;
-    @FXML
     private Parent root = null;
+    @FXML
+    private Button confirmButton;
 
     /*
 	 * Function will handle all button action events
@@ -63,8 +61,8 @@ public class ConfirmationViewController implements Initializable {
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/AmenityView.fxml"));
         } // if next button selected
-        else if (event.getSource() == nextButton) {
-            stage = (Stage) nextButton.getScene().getWindow();
+        else if (event.getSource() == confirmButton) {
+            stage = (Stage) confirmButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
         } // if cancel button selected
         else if (event.getSource() == cancelButton) {
