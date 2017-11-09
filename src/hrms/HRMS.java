@@ -10,10 +10,12 @@ import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
@@ -40,6 +42,7 @@ public class HRMS extends Application {
          */
         Parent root = FXMLLoader.load(getClass().getResource("View/HomeView.fxml"));
         Scene scene = new Scene(root);
+        
 
         stage.setScene(scene);
         stage.setTitle("Hotel Reservation Management System");

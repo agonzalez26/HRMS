@@ -7,6 +7,7 @@ import hrms.HRMS;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -24,6 +25,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
@@ -51,11 +53,13 @@ public class DayViewController implements Initializable {
     private DatePicker endDate;
 
     private long dayCount;
+    private final String datePattern = "yyyy-MM-dd";
 
     @FXML
     private Stage stage = null;
     @FXML
     private Parent root = null;
+    
 
     /*
 	 * Function will handle all button action events
@@ -100,15 +104,41 @@ public class DayViewController implements Initializable {
         /*
 		 * Initialize the calendars to the correct dates.
          */
+        
         calendarsInitialize();
 
     }
 
     private void calendarsInitialize() {
-
         Locale.setDefault(Locale.US);
+        StringConverter converter = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateformatter = DateTimeFormatter.ofPattern(datePattern);
+            @Override
+            public String toString(LocalDate date){
+                if(date != null){
+                    return dateformatter.format(date);
+                }else{
+                    return "";
+                }
+            }
+             @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateformatter);
+                } else {
+                    return null;
+                }
+            }
+            
+        };
+        
+        startDate.setConverter(converter);
+        endDate.setConverter(converter);
+                
+       
         // this is setting the first calendar to the current date
         startDate.setValue(LocalDate.now());
+        
 
         final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
             @Override

@@ -15,7 +15,7 @@
 
 <!--Layout for RoomView-->
 
-<StackPane style="-fx-background-color: #7689a9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+<StackPane maxHeight="600.0" maxWidth="1025.0" minHeight="600.0" minWidth="1025.0" prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: #7689a9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
            fx:controller="hrms.Controller.RoomViewController">
     <children>
         <AnchorPane id="roomView" fx:id="roomView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 

@@ -22,9 +22,11 @@ import hrms.Model.Application;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.prefs.Preferences;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
@@ -51,6 +53,7 @@ public class HomeViewController implements Initializable {
     private Stage stage = null;
     @FXML
     private Parent root = null;
+    private Scene scene;
 
     Application app = new Application();
 
@@ -70,7 +73,6 @@ public class HomeViewController implements Initializable {
             if (s.isEmpty()) {
                 // calls empty error method
                 EmptyError();
-
                 // get reference to the button's stage
                 stage = (Stage) checkInButton.getScene().getWindow();
                 // load up OTHER FXML document
@@ -88,6 +90,7 @@ public class HomeViewController implements Initializable {
 
             } // everything correct
             else {
+
                 // get reference to the button's stage
                 stage = (Stage) checkInButton.getScene().getWindow();
                 // load up OTHER FXML document
@@ -100,12 +103,14 @@ public class HomeViewController implements Initializable {
             app.setRoomCount("0");
             app.setChosenRooms(new ArrayList<>());
             // get reference to the button's stage
+
             stage = (Stage) bookReservationButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
 
         } // if login button selected
         else if (event.getSource() == logInButton) {
+
             // get reference to the button's stage
             stage = (Stage) logInButton.getScene().getWindow();
             // load up OTHER FXML document
@@ -136,7 +141,8 @@ public class HomeViewController implements Initializable {
                 root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
 
             } // everything correct
-            else {
+            else {               
+
                 // get reference to the button's stage
                 stage = (Stage) checkInButton.getScene().getWindow();
                 // load up OTHER FXML document
@@ -148,9 +154,12 @@ public class HomeViewController implements Initializable {
             System.exit(0);
         }
 
-        // create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+        Scene newscene = new Scene(root);
+        
+
+        stage.setScene(newscene);
+//                stage.setFullScreen(true);
+
         stage.show();
     }
 
@@ -159,6 +168,14 @@ public class HomeViewController implements Initializable {
         // TODO
     }
 
+//      Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+////
+////        //set Stage boundaries to visible bounds of the main screen
+////        stage.setX(primaryScreenBounds.getMinX());
+////        stage.setY(primaryScreenBounds.getMinY());
+////        stage.setWidth(primaryScreenBounds.getWidth());
+////        stage.setHeight(primaryScreenBounds.getHeight());
+////        // create a new scene with root and set the stage
     /*
 	 * Method called when the confirmation number does not exist in the database
 	 * 

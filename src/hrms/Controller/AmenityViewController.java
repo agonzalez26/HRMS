@@ -117,6 +117,7 @@ public class AmenityViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
 //		listView.getItems().addAll(
 //                        "Wifi:        Unlimited Access to Hotels Wifi",
 //                        "Dinner:        All you can eat buffet.",

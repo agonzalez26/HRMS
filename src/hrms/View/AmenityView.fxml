@@ -12,9 +12,9 @@
 
 <!--Layout for the Amenity View-->
 
-<StackPane style="-fx-background-color: #7689a9;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hrms.Controller.AmenityViewController">
+<StackPane maxHeight="650.0" maxWidth="1700.0" minHeight="600.0" minWidth="1025.0" prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: #7689a9;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hrms.Controller.AmenityViewController">
     <children>
-        <AnchorPane id="amenityView" fx:id="amenityView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: #7689a9;" StackPane.alignment="CENTER">
+        <AnchorPane id="amenityView" fx:id="amenityView" maxHeight="600.0" maxWidth="1025.0" minHeight="600.0" minWidth="1025.0" prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: #7689a9;" StackPane.alignment="CENTER">
             <children>
                 <Label prefHeight="29.0" prefWidth="1025.0" text="Hotel Reservation Management System" textFill="WHITE">
                     <font>
