@@ -86,11 +86,7 @@ public class ConfirmationViewController implements Initializable {
                     root = FXMLLoader.load(HRMS.class.getResource("View/ConfirmationView.fxml"));
             
                 }
-//                stage = (Stage) confirmButton.getScene().getWindow();
-//            root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
             }
-//            stage = (Stage) confirmButton.getScene().getWindow();
-//            root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
         } // if cancel button selected
         else if (event.getSource() == cancelButton) {
             stage = (Stage) cancelButton.getScene().getWindow();
@@ -146,11 +142,11 @@ public class ConfirmationViewController implements Initializable {
     public boolean validateCCCVV() throws IOException {
         String creditCardCVV = ccCVV.getText();
         if (!creditCardCVV.isEmpty()) {
-//            if (!creditCardCVV.matches("^\\d{8,19}")) {
-//                return false;
-//            } else {
-//                return true;
-//            }
+            if (!creditCardCVV.matches("^\\d{3}")) {
+                return false;
+            } else {
+                return true;
+            }
         }
         return true;
     }
@@ -158,11 +154,11 @@ public class ConfirmationViewController implements Initializable {
     public boolean validateCCZip() throws IOException {
         String zip = ccBillingZip.getText();
         if (!zip.isEmpty()) {
-//            if (!zip.matches("^\\d+{10}")) {
-//                return false;
-//            } else {
-//                return true;
-//            }
+            if (!zip.matches("^\\d+{5,9}")) {
+                return false;
+            } else {
+                return true;
+            }
         }
         return true;
     }
@@ -170,7 +166,7 @@ public class ConfirmationViewController implements Initializable {
      public boolean validateCreditCardNumber() throws IOException {
         String creditCardNumber = ccNumber.getText();
         if (!creditCardNumber.isEmpty()) {
-            if (!creditCardNumber.matches("^\\d{8,19}")) {
+            if (!creditCardNumber.matches("^\\d{14,16}")) {
                 return false;
             } else {
                 return true;
