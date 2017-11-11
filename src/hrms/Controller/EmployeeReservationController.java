@@ -119,13 +119,6 @@ public class EmployeeReservationController implements Initializable {
 
     }
 
-    /*
-	 * Method called when textfield, confirmation number is empty
-	 * 
-	 * @pre: database is accessible, EmployeeReservationView
-	 * 
-	 * @post: filled textfield, EmployeeReservationView
-     */
     private void EmptyError() {
         // creates alert that there is missing information in the textfield
         Alert a = new Alert(Alert.AlertType.ERROR, "Missing reservation number", ButtonType.OK);
@@ -133,13 +126,6 @@ public class EmployeeReservationController implements Initializable {
         Optional<ButtonType> result = a.showAndWait();
     }
 
-    /*
-	 * Method returns if the employee id is a integer
-	 * 
-	 * @pre: integer value in textfield
-	 * 
-	 * @post: true or false if integer number in textfield
-     */
     public static boolean isNumeric(String str) {
         // try catch to check if the input is an integer
         try {
@@ -154,13 +140,6 @@ public class EmployeeReservationController implements Initializable {
         return true;
     }
 
-    /*
-	 * Method called when the confirmation number does not exist in the database
-	 * 
-	 * @pre: HomeView
-	 * 
-	 * @post: ConfirmationError Alert display, HomeView
-     */
     private void ConfirmationError() {
         Alert a = new Alert(Alert.AlertType.ERROR, "Incorrect Reservation Number", ButtonType.OK);
         Optional<ButtonType> result = a.showAndWait();

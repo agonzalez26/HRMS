@@ -73,8 +73,8 @@ public class RoomSelectionViewController implements Initializable {
     @FXML
     private Parent root = null;
 
-    private int numRooms;
-    private int roomCount = 0;
+    private int numRooms; //Number of rooms chosen in RoomView
+    private int roomCount = 0; //Number of rooms selected by guest
     private List<String> chosenRooms = new ArrayList<String>();
 
     Application app = new Application();
@@ -87,33 +87,25 @@ public class RoomSelectionViewController implements Initializable {
             stage = (Stage) logInButton.getScene().getWindow();
             //load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         } else if (event.getSource() == backButton) {
             //get reference to the button's stage         
             stage = (Stage) backButton.getScene().getWindow();
             //load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/RoomView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         } else if (event.getSource() == nextButton) {
             app.setChosenRooms(chosenRooms);
             stage = (Stage) nextButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/AmenityView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         } else if (event.getSource() == cancelButton) {
             stage = (Stage) cancelButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         } else {
             System.exit(0);
         }
+        //create a new scene with root and set the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handleRoomAction(ActionEvent event) throws IOException {

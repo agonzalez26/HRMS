@@ -75,18 +75,58 @@ public class EmployeeLoginViewController implements Initializable {
 
                 // get reference to the button's stage
                 stage = (Stage) nextButton.getScene().getWindow();
-//                    // load up OTHER FXML document
-                root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeView.fxml"));
-            } // exit application
-            else {
-                System.exit(0);
-            }
+                // load up OTHER FXML document
+                root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
+            } // checks if id is not empty but password is empty
+            else if (!id.isEmpty() && password.isEmpty()) {
+                // call error message
+                EmptyError();
 
-            // create a new scene with root and set the stage
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+                // get reference to the button's stage
+                stage = (Stage) nextButton.getScene().getWindow();
+                // load up OTHER FXML document
+                root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
+            } // if id and password are not empty inputs
+            else {
+                // checks if id is a number and password is not empty
+                if (isNumeric(id) && !password.isEmpty()) {
+                    // get reference to the button's stage
+                    if (id.equals("1111")) {
+                        app.setEmp(false);
+                    }
+
+                    stage = (Stage) nextButton.getScene().getWindow();
+                    // load up OTHER FXML document
+                    root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeView.fxml"));
+
+                } else {
+                    // employee id does not exist
+                    AccessDeniedError();
+
+                    // get reference to the button's stage
+                    stage = (Stage) nextButton.getScene().getWindow();
+                    // load up OTHER FXML document
+                    root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
+
+                }
+            }
+        } // exit application
+        else {
+            System.exit(0);
         }
+
+        // create a new scene with root and set the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
     }
 
     /*
@@ -137,11 +177,6 @@ public class EmployeeLoginViewController implements Initializable {
         }
         // the string is an integer
         return true;
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

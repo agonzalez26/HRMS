@@ -65,36 +65,24 @@ public class ManagerViewPriceController implements Initializable {
             stage = (Stage) logOutButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
 
         } // if room price button selected
         else if (event.getSource() == roomPriceButton) {
             stage = (Stage) roomPriceButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewPrice.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
 
         } // if employee button selected
         else if (event.getSource() == employeeButton) {
             stage = (Stage) employeeButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewEmployee.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
 
         } // if amenity button selected
         else if (event.getSource() == amenityButton) {
             stage = (Stage) amenityButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
 
         } // if update price button selected
         else if (event.getSource() == updatePriceButton) {
@@ -102,9 +90,6 @@ public class ManagerViewPriceController implements Initializable {
             System.out.println("Updated rooms price.");
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewPrice.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
 
         } // if search button selected
         else if (event.getSource() == searchButton) {
@@ -115,9 +100,6 @@ public class ManagerViewPriceController implements Initializable {
 
                 stage = (Stage) searchButton.getScene().getWindow();
                 root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewPrice.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
 
             } else if (!isNumeric(conNum)) {
                 // calls confirmation error method
@@ -125,17 +107,11 @@ public class ManagerViewPriceController implements Initializable {
 //				System.out.println("Showing matched rooms");
                 stage = (Stage) searchButton.getScene().getWindow();
                 root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewPrice.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
 
             } else {
                 System.out.println("Showing matched rooms");
                 stage = (Stage) searchButton.getScene().getWindow();
                 root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewPrice.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
             }
 
         } // if manager button selected
@@ -144,30 +120,32 @@ public class ManagerViewPriceController implements Initializable {
 
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         } // exit application
         else if (event.getSource() == roomButton) {
             stage = (Stage) roomButton.getScene().getWindow();
 
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         } else if (event.getSource() == reservationsButton) {
             stage = (Stage) reservationsButton.getScene().getWindow();
 
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         }
 
+        // create a new scene with root and set the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
+    /*
+	 * Method called when textfield, confirmation number is empty
+	 * 
+	 * @pre: database is accessible, EmployeeReservationView
+	 * 
+	 * @post: filled textfield, EmployeeReservationView
+     */
     private void EmptyError() {
         // creates alert that there is missing information in the textfield
         Alert a = new Alert(Alert.AlertType.ERROR, "Missing confirmation number", ButtonType.OK);
@@ -175,6 +153,13 @@ public class ManagerViewPriceController implements Initializable {
         Optional<ButtonType> result = a.showAndWait();
     }
 
+    /*
+	 * Method returns if the employee id is a integer
+	 * 
+	 * @pre: integer value in textfield
+	 * 
+	 * @post: true or false if integer number in textfield
+     */
     public static boolean isNumeric(String str) {
         // try catch to check if the input is an integer
         try {
@@ -189,6 +174,13 @@ public class ManagerViewPriceController implements Initializable {
         return true;
     }
 
+    /*
+	 * Method called when the confirmation number does not exist in the database
+	 * 
+	 * @pre: HomeView
+	 * 
+	 * @post: ConfirmationError Alert display, HomeView
+     */
     private void ConfirmationError() {
         Alert a = new Alert(Alert.AlertType.ERROR, "Incorrect Confirmation Number", ButtonType.OK);
         Optional<ButtonType> result = a.showAndWait();

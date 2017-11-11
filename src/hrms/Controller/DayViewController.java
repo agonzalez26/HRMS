@@ -59,7 +59,7 @@ public class DayViewController implements Initializable {
     private Stage stage = null;
     @FXML
     private Parent root = null;
-
+    
 
     /*
 	 * Function will handle all button action events
@@ -72,37 +72,28 @@ public class DayViewController implements Initializable {
             stage = (Stage) logInButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         } // if back button selected
         else if (event.getSource() == backButton) {
             // get reference to the button's stage
             stage = (Stage) backButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         } // if next button selected
         else if (event.getSource() == nextButton) {
             stage = (Stage) nextButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/GuestView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         } // if cancel button selected
         else if (event.getSource() == cancelButton) {
             stage = (Stage) cancelButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         } // exit application
         else {
             System.exit(0);
         }
-
+        // create a new scene with root and set the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**
@@ -113,7 +104,7 @@ public class DayViewController implements Initializable {
         /*
 		 * Initialize the calendars to the correct dates.
          */
-
+        
         calendarsInitialize();
 
     }
@@ -122,17 +113,15 @@ public class DayViewController implements Initializable {
         Locale.setDefault(Locale.US);
         StringConverter converter = new StringConverter<LocalDate>() {
             DateTimeFormatter dateformatter = DateTimeFormatter.ofPattern(datePattern);
-
             @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
+            public String toString(LocalDate date){
+                if(date != null){
                     return dateformatter.format(date);
-                } else {
+                }else{
                     return "";
                 }
             }
-
-            @Override
+             @Override
             public LocalDate fromString(String string) {
                 if (string != null && !string.isEmpty()) {
                     return LocalDate.parse(string, dateformatter);
@@ -140,14 +129,16 @@ public class DayViewController implements Initializable {
                     return null;
                 }
             }
-
+            
         };
-
+        
         startDate.setConverter(converter);
         endDate.setConverter(converter);
-
+                
+       
         // this is setting the first calendar to the current date
         startDate.setValue(LocalDate.now());
+        
 
         final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
             @Override
@@ -168,7 +159,7 @@ public class DayViewController implements Initializable {
         };
         startDate.setDayCellFactory(dayCellFactory);
         startDate.setEditable(false);
-
+        
         final Callback<DatePicker, DateCell> dayCellFactory2 = new Callback<DatePicker, DateCell>() {
             @Override
             public DateCell call(final DatePicker datePicker) {

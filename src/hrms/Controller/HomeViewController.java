@@ -77,9 +77,6 @@ public class HomeViewController implements Initializable {
                 stage = (Stage) checkInButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
 
             } // if not empty and is not in integer
             else if (!isNumeric(s)) {
@@ -90,9 +87,7 @@ public class HomeViewController implements Initializable {
                 stage = (Stage) checkInButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+
             } // everything correct
             else {
 
@@ -100,9 +95,6 @@ public class HomeViewController implements Initializable {
                 stage = (Stage) checkInButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
             }
 
         } // if book reservation button
@@ -115,9 +107,7 @@ public class HomeViewController implements Initializable {
             stage = (Stage) bookReservationButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+
         } // if login button selected
         else if (event.getSource() == logInButton) {
 
@@ -125,9 +115,7 @@ public class HomeViewController implements Initializable {
             stage = (Stage) logInButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+
         } // if checkout button selected
         else if (event.getSource() == checkOutButton) {
             // retrieves textfield input
@@ -141,9 +129,7 @@ public class HomeViewController implements Initializable {
                 stage = (Stage) checkInButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+
             } // checks is input is an integer
             else if (!isNumeric(s)) {
                 // calls confirmation error method
@@ -153,25 +139,28 @@ public class HomeViewController implements Initializable {
                 stage = (Stage) checkInButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+
             } // everything correct
-            else {
+            else {               
 
                 // get reference to the button's stage
                 stage = (Stage) checkInButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/CheckOutView.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
             }
 
         } // exit application
         else {
             System.exit(0);
         }
+
+        Scene newscene = new Scene(root);
+        
+
+        stage.setScene(newscene);
+//                stage.setFullScreen(true);
+
+        stage.show();
     }
 
     @Override
@@ -179,18 +168,48 @@ public class HomeViewController implements Initializable {
         // TODO
     }
 
+//      Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+////
+////        //set Stage boundaries to visible bounds of the main screen
+////        stage.setX(primaryScreenBounds.getMinX());
+////        stage.setY(primaryScreenBounds.getMinY());
+////        stage.setWidth(primaryScreenBounds.getWidth());
+////        stage.setHeight(primaryScreenBounds.getHeight());
+////        // create a new scene with root and set the stage
+    /*
+	 * Method called when the confirmation number does not exist in the database
+	 * 
+	 * @pre: HomeView
+	 * 
+	 * @post: ConfirmationError Alert display, HomeView
+     */
     private void ConfirmationError() {
         Alert a = new Alert(Alert.AlertType.ERROR, "Incorrect Reservation Number", ButtonType.OK);
         Optional<ButtonType> result = a.showAndWait();
 
     }
 
+    /*
+	 * Method called when the confirmation number field is empty
+	 * 
+	 * @pre: HomeView
+	 * 
+	 * @post: EmptyError Alert display, HomeView
+     */
     private void EmptyError() {
-        Alert a = new Alert(Alert.AlertType.ERROR, "Missing Reservation Number", ButtonType.OK);
+        Alert a = new Alert(Alert.AlertType.ERROR, "Missing Resrvation Number", ButtonType.OK);
         Optional<ButtonType> result = a.showAndWait();
     }
 
+    /*
+	 * Method returns if the employee id is a integer
+	 * 
+	 * @pre: integer value in textfield
+	 * 
+	 * @post: true or false if integer number in textfield
+     */
     public static boolean isNumeric(String str) {
+        // try catch to check if the input is an integer
         try {
             // parse the string into an integer
             int d = Integer.parseInt(str);
