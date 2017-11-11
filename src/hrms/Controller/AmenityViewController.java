@@ -105,11 +105,6 @@ public class AmenityViewController implements Initializable {
         else {
             System.exit(0);
         }
-
-        // create a new scene with root and set the stage
-//		Scene scene = new Scene(root);
-//		stage.setScene(scene);
-//		stage.show();
     }
 
     /**
@@ -117,14 +112,6 @@ public class AmenityViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-//		listView.getItems().addAll(
-//                        "Wifi:        Unlimited Access to Hotels Wifi",
-//                        "Dinner:        All you can eat buffet.",
-//                        "Car Service:        Rental of car for days staying.",
-//                        "Parking Space:        Own reservered parking spot.",
-//                        "Bar:        Access to unlimited mini bar.");
-//                listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         amenitiesInitialize();
         ObservableList<String> rooms = FXCollections.observableArrayList(app.getChosenRooms());
 
@@ -143,8 +130,7 @@ public class AmenityViewController implements Initializable {
                 "Parking Space:        Own reservered parking spot.",
                 "Bar:        Access to unlimited mini bar.");
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        
-        
+
     }
 
 }

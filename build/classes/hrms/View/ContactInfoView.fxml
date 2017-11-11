@@ -13,8 +13,8 @@
 
 
 <StackPane prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: #7689a9;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hrms.Controller.ContactInfoViewController">
-   <children>
-      <AnchorPane id="contactInfoView" fx:id="contactInfoView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: #7689a9;" StackPane.alignment="CENTER">
+    <children>
+        <AnchorPane id="contactInfoView" fx:id="contactInfoView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1025.0" style="-fx-background-color: #7689a9;" StackPane.alignment="CENTER">
             <children>
                 <Label prefHeight="29.0" prefWidth="1025.0" text="Hotel Reservation Management System" textFill="WHITE">
                     <font>
@@ -137,5 +137,5 @@
                 </Label>
             </children>
         </AnchorPane>
-   </children>
+    </children>
 </StackPane>

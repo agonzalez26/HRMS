@@ -6,6 +6,7 @@
 package hrms.Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -18,6 +19,7 @@ public class Application {
     private static String guestCount = "0";
     private static String roomCount = "0";
     private static List<String> chosenRooms = new ArrayList<String>();
+    private static HashMap hm = new HashMap();
 
     public void setEmp(boolean t) {
         emp = t;
@@ -49,5 +51,20 @@ public class Application {
 
     public List<String> getChosenRooms() {
         return chosenRooms;
+    }
+
+    public void setMap(HashMap hm) {
+        this.hm = hm;
+    }
+
+    public HashMap getMap() {
+        return hm;
+    }
+
+    public void seeMap() {
+        for (String s : chosenRooms) {
+            System.out.print(s);
+            System.out.println(hm.get(s));
+        }
     }
 }

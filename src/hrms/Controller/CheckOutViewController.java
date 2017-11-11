@@ -37,7 +37,9 @@ public class CheckOutViewController implements Initializable {
     private Button checkOutButton;
     @FXML
     private Button cancelButton;
+    @FXML
     private Stage stage = null;
+    @FXML
     private Parent root = null;
     @FXML
     private TextField ccNumber;
@@ -63,16 +65,16 @@ public class CheckOutViewController implements Initializable {
         else if (event.getSource() == checkOutButton) {
             a = new Alert(Alert.AlertType.INFORMATION, "Are you sure you want to check out?", ButtonType.YES, ButtonType.NO);
             result = a.showAndWait();
-            if(result.isPresent() && result.get() == ButtonType.YES){//if optional has anything in it and then can see what it is
+            if (result.isPresent() && result.get() == ButtonType.YES) {//if optional has anything in it and then can see what it is
                 a = new Alert(Alert.AlertType.CONFIRMATION, "Payment Processing (2-3 Days)", ButtonType.OK);
                 result = a.showAndWait();
                 stage = (Stage) checkOutButton.getScene().getWindow();
-                root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml")); 
-            }else{
+                root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+            } else {
                 stage = (Stage) checkOutButton.getScene().getWindow();
                 root = FXMLLoader.load(HRMS.class.getResource("View/CheckOutView.fxml"));
             }
-            
+
         } // if cancel button selected
         else if (event.getSource() == cancelButton) {
             stage = (Stage) cancelButton.getScene().getWindow();
@@ -92,7 +94,7 @@ public class CheckOutViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
 }

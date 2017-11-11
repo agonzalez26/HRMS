@@ -67,31 +67,37 @@ public class GuestViewController implements Initializable {
             stage = (Stage) logInButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if back button selected
         else if (event.getSource() == backButton) {
             // get reference to the button's stage
             stage = (Stage) backButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/DayView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if next button selected
         else if (event.getSource() == nextButton) {
             app.setGuestCount(guestCountBox.getValue().toString());
             stage = (Stage) nextButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/RoomView.fxml"));
-
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if cancel button selected
         else if (event.getSource() == cancelButton) {
             stage = (Stage) cancelButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if exit application selected
         else {
             System.exit(0);
         }
-
-        // create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
     /**
@@ -103,13 +109,6 @@ public class GuestViewController implements Initializable {
 
     }
 
-    /*
-	 * Setting up the choice box for guest Count
-	 * 
-	 * @pre: guestCount >=0 , GuestView
-	 * 
-	 * @post: guestCount >0 0, RoomView
-     */
     private void guestCountInitialize() {
         // setting the values into the choice box
         guestCountBox.setItems(guestCountList);

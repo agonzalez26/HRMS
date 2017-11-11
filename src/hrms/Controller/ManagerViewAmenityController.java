@@ -72,36 +72,49 @@ public class ManagerViewAmenityController implements Initializable {
             stage = (Stage) logOutButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         } // if room button selected
         else if (event.getSource() == roomButton) {
             stage = (Stage) roomButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeView.fxml"));
-
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } else if (event.getSource() == reservationsButton) {
             stage = (Stage) reservationsButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
-
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if room price button selected
         else if (event.getSource() == roomPriceButton) {
             stage = (Stage) roomPriceButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewPrice.fxml"));
-
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if employee button selected
         else if (event.getSource() == employeeButton) {
             stage = (Stage) employeeButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewEmployee.fxml"));
-
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if amenity button selected
         else if (event.getSource() == amenityButton) {
             stage = (Stage) amenityButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
-
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if add button selected
         else if (event.getSource() == addButton) {
             String name = amenityName.getText();
@@ -114,17 +127,25 @@ public class ManagerViewAmenityController implements Initializable {
                 stage = (Stage) addButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
-
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             } else if (!name.isEmpty() && !price.isEmpty() && !description.isEmpty()) {
                 stage = (Stage) addButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
                 System.out.println("Amenity added.");
             }
 
             stage = (Stage) addButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if delete button selected
         else if (event.getSource() == deleteButton) {
             String name = amenityName.getText();
@@ -137,17 +158,25 @@ public class ManagerViewAmenityController implements Initializable {
                 stage = (Stage) deleteButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
-
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             } else if (!name.isEmpty() && !price.isEmpty() && !description.isEmpty()) {
                 stage = (Stage) deleteButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
                 System.out.println("Amenity deleted.");
             }
 
             stage = (Stage) deleteButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 //			stage = (Stage) deleteButton.getScene().getWindow();
 //			// load up OTHER FXML document
 //			root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
@@ -164,42 +193,40 @@ public class ManagerViewAmenityController implements Initializable {
                 stage = (Stage) updateButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
-
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             } else if (!name.isEmpty() && !price.isEmpty() && !description.isEmpty()) {
                 stage = (Stage) updateButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
                 System.out.println("Amenity Updated.");
             }
 
             stage = (Stage) updateButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
-
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if manager button selected
         else if (event.getSource() == managerButton) {
             stage = (Stage) managerButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerView.fxml"));
-
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // exit application
         else {
             System.exit(0);
         }
 
-        // create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
-    /*
-	 * Method called when the confirmation number field is empty
-	 * 
-	 * @pre: HomeView
-	 * 
-	 * @post: EmptyError Alert display, HomeView
-     */
     private void EmptyError() {
         Alert a = new Alert(Alert.AlertType.ERROR, "Missing Information", ButtonType.OK);
         Optional<ButtonType> result = a.showAndWait();

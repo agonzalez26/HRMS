@@ -67,36 +67,54 @@ public class ManagerViewEmployeeController implements Initializable {
             stage = (Stage) logOutButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         } // if room button selected
         else if (event.getSource() == roomButton) {
             stage = (Stage) roomButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         } // if reservations button selected
         else if (event.getSource() == reservationsButton) {
             stage = (Stage) reservationsButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeReservation.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         } // if room price button selected
         else if (event.getSource() == roomPriceButton) {
             stage = (Stage) roomPriceButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewPrice.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         } // if employee button selected
         else if (event.getSource() == employeeButton) {
             stage = (Stage) employeeButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewEmployee.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         } // if amenity button selected
         else if (event.getSource() == amenityButton) {
             stage = (Stage) amenityButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewAmenity.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         } // if create button selected
         else if (event.getSource() == createButton) {
@@ -113,6 +131,9 @@ public class ManagerViewEmployeeController implements Initializable {
                 stage = (Stage) createButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewEmployee.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             } // if id and password are not empty inputs
             else {
                 // checks if id is a number and password is not empty
@@ -122,6 +143,9 @@ public class ManagerViewEmployeeController implements Initializable {
                     stage = (Stage) createButton.getScene().getWindow();
                     // load up OTHER FXML document
                     root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewEmployee.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
                 }
             }
 
@@ -140,6 +164,9 @@ public class ManagerViewEmployeeController implements Initializable {
                 stage = (Stage) removeButton.getScene().getWindow();
                 // load up OTHER FXML document
                 root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewEmployee.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             } // if id and password are not empty inputs
             else {
                 // checks if id is a number and password is not empty
@@ -150,6 +177,9 @@ public class ManagerViewEmployeeController implements Initializable {
                     stage = (Stage) removeButton.getScene().getWindow();
                     // load up OTHER FXML document
                     root = FXMLLoader.load(HRMS.class.getResource("View/ManagerViewEmployee.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
                 }
             }
 
@@ -158,25 +188,16 @@ public class ManagerViewEmployeeController implements Initializable {
             stage = (Stage) managerButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/ManagerView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         } // exit application
         else {
             System.exit(0);
         }
-
-        // create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
-    /*
-	 * Method called when textfields, id or password, are empty
-	 * 
-	 * @pre: database is accessible, EmployeeLoginView
-	 * 
-	 * @post: filled textfields, EmployeeLoginView
-     */
     private void EmptyError() {
         // creates alert that there is missing information in the textfields
         Alert a = new Alert(Alert.AlertType.ERROR, "Missing information (Id or Password)", ButtonType.OK);
@@ -184,13 +205,6 @@ public class ManagerViewEmployeeController implements Initializable {
         Optional<ButtonType> result = a.showAndWait();
     }
 
-    /*
-	 * Method returns if the employee id is a integer
-	 * 
-	 * @pre: integer value in textfield
-	 * 
-	 * @post: true or false if integer number in textfield
-     */
     public static boolean isNumeric(String str) {
         // try catch to check if the input is an integer
         try {

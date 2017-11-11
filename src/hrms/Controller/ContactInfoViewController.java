@@ -68,7 +68,7 @@ public class ContactInfoViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
     // Method that handles all of the button action events
@@ -81,43 +81,55 @@ public class ContactInfoViewController implements Initializable {
             stage = (Stage) logInButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if back button selected
         else if (event.getSource() == backButton) {
             // get reference to the button's stage
             stage = (Stage) backButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if next button selected
         else if (event.getSource() == nextButton) {
-//            if (guestFirstName.getText().isEmpty() || guestLastName.getText().isEmpty() || guestPhoneNumber.getText().isEmpty()
-//                    || guestEmailAddress.getText().isEmpty() || guestAddress1.getText().isEmpty() || guestAddress2.getText().isEmpty()
-//                    || guestCCNumber.getText().isEmpty()) {
-//                EmptyError();
-//                stage = (Stage) nextButton.getScene().getWindow();
-//                root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
-//            } else {
-//                if (validateFields() == true) {
-//                    stage = (Stage) nextButton.getScene().getWindow();
-//                    root = FXMLLoader.load(HRMS.class.getResource("View/DayView.fxml"));
-//                } else {
-//                    stage = (Stage) nextButton.getScene().getWindow();
-//                    root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
-//                }
-//            }
+            if (guestFirstName.getText().isEmpty() 
+                    || guestLastName.getText().isEmpty() 
+                    || guestPhoneNumber.getText().isEmpty()
+                    || guestEmailAddress.getText().isEmpty() 
+                    || guestAddress1.getText().isEmpty() 
+                    || guestAddress2.getText().isEmpty()
+                    || guestCCNumber.getText().isEmpty()) {
+                EmptyError();
+                stage = (Stage) nextButton.getScene().getWindow();
+                root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
+            } else {
+                if (validateFields() == true) {
                     stage = (Stage) nextButton.getScene().getWindow();
                     root = FXMLLoader.load(HRMS.class.getResource("View/DayView.fxml"));
+                } else {
+                    stage = (Stage) nextButton.getScene().getWindow();
+                    root = FXMLLoader.load(HRMS.class.getResource("View/ContactInfoView.fxml"));
+                }
+            }
+            stage = (Stage) nextButton.getScene().getWindow();
+            root = FXMLLoader.load(HRMS.class.getResource("View/DayView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if cancel button selected
         else if (event.getSource() == cancelButton) {
             stage = (Stage) cancelButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // exit the application
         else {
             System.exit(0);
         }
-        // create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
 
     }
 
@@ -190,7 +202,7 @@ public class ContactInfoViewController implements Initializable {
     public boolean validateCreditCard() throws IOException {
         String creditCard = guestCCNumber.getText();
         if (!creditCard.isEmpty()) {
-            if (!creditCard.matches("^\\d{8,19}")) {
+            if (!creditCard.matches("^\\d{14,16}")) {
                 return false;
             } else {
                 return true;

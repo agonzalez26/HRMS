@@ -108,10 +108,6 @@ public class RoomViewController implements Initializable {
         else {
             System.exit(0);
         }
-        // create a new scene with root and set the stage
-//		Scene scene = new Scene(root);
-//		stage.setScene(scene);
-//		stage.show();
     }
 
     /**
@@ -123,13 +119,6 @@ public class RoomViewController implements Initializable {
 
     }
 
-    /*
-	 * Setting up the choice box for room Count
-	 * 
-	 * @pre: roomCount >=0 , RoomView
-	 * 
-	 * @post: roomCount >0 0, RoomSelectionView
-     */
     private void roomCountInitialize() {
         // setting the values into the choice box
         roomCountBox.setItems(roomCountList);

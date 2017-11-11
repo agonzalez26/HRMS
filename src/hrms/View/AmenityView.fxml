@@ -60,7 +60,6 @@
                         <Font size="18.0" />
                     </font>
                 </Button>
-                <!--      <ChoiceBox id="roomCount" fx:id="roomCountBox" layoutX="387.0" layoutY="265.0" prefHeight="25.0" prefWidth="256.0" />-->
             </children>
         </AnchorPane>
     </children>

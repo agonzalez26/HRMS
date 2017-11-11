@@ -63,42 +63,56 @@ public class ConfirmationViewController implements Initializable {
             stage = (Stage) logInButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/EmployeeLoginView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if back button selected
         else if (event.getSource() == backButton) {
             // get reference to the button's stage
             stage = (Stage) backButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(HRMS.class.getResource("View/AmenityView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // if next button selected
         else if (event.getSource() == confirmButton) {
-            if(ccFName.getText().isEmpty() || ccLName.getText().isEmpty() || ccCVV.getText().isEmpty() || ccBillingZip.getText().isEmpty()){
+            if (ccFName.getText().isEmpty() || ccLName.getText().isEmpty() || ccCVV.getText().isEmpty() || ccBillingZip.getText().isEmpty()) {
                 EmptyError();
                 stage = (Stage) confirmButton.getScene().getWindow();
                 root = FXMLLoader.load(HRMS.class.getResource("View/ConfirmationView.fxml"));
-            }else{
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else {
                 //need to do validation
-                if(validateCCFields() == true){
+                if (validateCCFields() == true) {
                     stage = (Stage) confirmButton.getScene().getWindow();
-                     root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
-            
-                }else{
+                    root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+
+                } else {
                     stage = (Stage) confirmButton.getScene().getWindow();
                     root = FXMLLoader.load(HRMS.class.getResource("View/ConfirmationView.fxml"));
-            
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+
                 }
             }
         } // if cancel button selected
         else if (event.getSource() == cancelButton) {
             stage = (Stage) cancelButton.getScene().getWindow();
             root = FXMLLoader.load(HRMS.class.getResource("View/HomeView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } // exit application
         else {
             System.exit(0);
         }
-        // create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
     /**
@@ -108,13 +122,14 @@ public class ConfirmationViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+
     private void EmptyError() {
         Alert a = new Alert(Alert.AlertType.ERROR, "Missing Credit Card Information", ButtonType.OK);
         Optional<ButtonType> result = a.showAndWait();
     }
 
     private boolean validateCCFields() throws IOException {
-         if (validateFirstName() == false) {
+        if (validateFirstName() == false) {
             Alert a = new Alert(Alert.AlertType.ERROR, "First Name not formatted correctly", ButtonType.OK);
             Optional<ButtonType> result = a.showAndWait();
             return false;
@@ -122,22 +137,22 @@ public class ConfirmationViewController implements Initializable {
             Alert a = new Alert(Alert.AlertType.ERROR, "Last Name not formatted correctly", ButtonType.OK);
             Optional<ButtonType> result = a.showAndWait();
             return false;
-        }else if(validateCreditCardNumber() == false){
+        } else if (validateCreditCardNumber() == false) {
             Alert a = new Alert(Alert.AlertType.ERROR, "Credit Card Number not formatted correctly", ButtonType.OK);
             Optional<ButtonType> result = a.showAndWait();
             return false;
-        }else if(validateCCCVV() == false){
+        } else if (validateCCCVV() == false) {
             Alert a = new Alert(Alert.AlertType.ERROR, "Credit Card CVV not formatted correctly", ButtonType.OK);
             Optional<ButtonType> result = a.showAndWait();
             return false;
-        }
-         else if(validateCCZip() == false){
+        } else if (validateCCZip() == false) {
             Alert a = new Alert(Alert.AlertType.ERROR, "Credit Card Zip Code not formatted correctly", ButtonType.OK);
             Optional<ButtonType> result = a.showAndWait();
             return false;
         }
-         return true;
+        return true;
     }
+
     //needs to be corrected
     public boolean validateCCCVV() throws IOException {
         String creditCardCVV = ccCVV.getText();
@@ -162,8 +177,8 @@ public class ConfirmationViewController implements Initializable {
         }
         return true;
     }
-    
-     public boolean validateCreditCardNumber() throws IOException {
+
+    public boolean validateCreditCardNumber() throws IOException {
         String creditCardNumber = ccNumber.getText();
         if (!creditCardNumber.isEmpty()) {
             if (!creditCardNumber.matches("^\\d{14,16}")) {
@@ -174,7 +189,8 @@ public class ConfirmationViewController implements Initializable {
         }
         return true;
     }
-       public boolean validateFirstName() throws IOException {
+
+    public boolean validateFirstName() throws IOException {
         String firstName = ccFName.getText();
         if (!firstName.isEmpty()) {
             if (!firstName.matches("[a-zA-Z]+")) {
